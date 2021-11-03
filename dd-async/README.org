@@ -1,0 +1,39 @@
+#+Title: Rust async deep-dive course
+#+Author: Katharina Fey
+#+SETUPFILE: ../html.setup
+
+* Introduction
+
+  This is an _intermediate level_ course, targeted at developers who
+  have at least _some familiarity with Rust and async development_
+  models.
+
+* Course outline
+
+   + [[./010-what-is-async.org][Async theory: what is async?]]
+   + [[file:020-async-in-core-std.org][Async foundations in core/std]]
+   + Writing a Future
+   + Runtimes
+   + Excursion: scheduling
+   + Excursion: channels & backpressure
+   + Tasks, futures, and threads
+   + 
+
+   
+* Build these slides
+
+   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/][CI artifacts]] for these
+   slides, but if you must build them yourself, you need to have Emacs
+   (v26+) and org-mode installed!
+
+
+   
+* License
+
+   This course, as well as any associated media assets is licensed
+   under the GNU Free Documentation License Version 1.3 (or later).
+   All associated code examples are licensed under the GNU General
+   Public License Version 3.0 (or later).
+
+   See the [[../licenses][licenses]] directory for complete copies of the applicable
+   license texts.
