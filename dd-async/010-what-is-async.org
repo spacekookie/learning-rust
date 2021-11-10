@@ -2,21 +2,29 @@
 #+Subtitle: We just don't know yet
 #+SETUPFILE: ../reveal.setup
 
-* Async development
+* Async theory
 
-  Something someone came up with somewhere and now we're all stuck
-  with it.
+  + Asynchronous programming aims to use system resources more efficiently
+  + Execute code while waiting for external input
+  + Developed under many different names
+    + coroutines
+    + co-operative multitasking
+    + non-blocking I/O
 
   #+BEGIN_NOTES
-    Here are some speaker notes!
+  A quick recap over what async development is.  You should all know
+  this because this is an advanced course.
+
+  We are not going to talk much about _why_ you would want to do async
+  development, and instead focus on the how and internals of how this
+  is implemented in Rust.
   #+END_NOTES
+
+* "Non-blocking I/O"
+
+  Executing code while waiting for I/O
+
 
 * Other slide
 
   bites the dust
-
-  #+BEGIN_SRC emacs-lisp
-    (defun generate-slides ()
-      (interactive
-       (print "hello!")))
-  #+END_SRC

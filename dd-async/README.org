@@ -28,13 +28,27 @@
    The following function will export the full course into an HTML
    slide tree.
    
-   #+BEGIN_SRC lisp
+   #+BEGIN_SRC emacs-lisp
+     ;; TODO: swap the theme to be more easily readable on white background
      (defun export-course ()
+       "Export a course tree as a set of HTML files"
        (interactive)
-       (setq org-reveal-root "../.templates")
+     
+       ;; Make sure org-reveal is loaded and set-up
        (load-library "reveal")
+       (setq org-reveal-root "../.templates")
+     
+       ;; Export the README
+       (find-file "README.org")
+       (org-html-export-to-html)
+     
+       ;; Then export the rest of the slides
        (defvar slides (delete "README.org" (directory-files "." nil "\.org$" t)))
-       (print slides))
+       (mapcar
+        (lambda (file)
+          (find-file file)
+          (org-reveal-export-to-html))
+        slides))
    #+END_SRC
    
 * License

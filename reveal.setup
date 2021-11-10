@@ -22,7 +22,7 @@ This file contains common reveal.js export settings for org-mode.
 
    Now come options that are very specific to reveal.js and the way it works.
 
-   #+REVEAL_INIT_OPTIONS: transition:'none', width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, progress:false
+   #+REVEAL_INIT_OPTIONS: transition:'none', width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, progress:false, hash:true
    #+REVEAL_THEME: simple
    
    We also customise the title slide to have a link back to the ../README.org!
