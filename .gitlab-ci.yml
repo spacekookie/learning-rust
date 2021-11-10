@@ -1,0 +1,12 @@
+image: ubuntu:latest
+
+before_script:
+  - apt-get update && apt-get upgrade -y
+  - apt-get install -y emacs tree
+  - emacs --batch -l ci/setup.el
+
+build:
+    stage: build
+    script:
+      - echo "Can this run?"
+      - tree $HOME/.emacs.d/
