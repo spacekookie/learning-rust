@@ -19,14 +19,23 @@
    + Tasks, futures, and threads
    + 
 
-   
 * Build these slides
 
    It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/][CI artifacts]] for these
    slides, but if you must build them yourself, you need to have Emacs
    (v26+) and org-mode installed!
 
-
+   The following function will export the full course into an HTML
+   slide tree.
+   
+   #+BEGIN_SRC lisp
+     (defun export-course ()
+       (interactive)
+       (setq org-reveal-root "../.templates")
+       (load-library "reveal")
+       (defvar slides (delete "README.org" (directory-files "." nil "\.org$" t)))
+       (print slides))
+   #+END_SRC
    
 * License
 
@@ -37,3 +46,4 @@
 
    See the [[../licenses][licenses]] directory for complete copies of the applicable
    license texts.
+

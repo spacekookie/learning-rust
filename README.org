@@ -21,6 +21,6 @@
      position to write complex systems applications and libraries
    - [[./dd-ownership][dd-ownership]]  :: A deep-dive course into the Rust ownership
      model
-   - [[./dd-async][dd-async]]      :: A deep-dive course into async development, async
+   - [[./dd-async/README.org][dd-async]]     :: A deep-dive course into async development, async
      compiler internals, and runtime development in Rust
 

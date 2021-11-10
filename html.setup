@@ -4,7 +4,7 @@ This file contains common HTML export settings for org-mode.
 
 ** Disable table of contents and header numbering
 
-   #+Options: toc:nil num:nil
+   #+Options: toc:nil num:nil html_postamble:nil
 
 ** Include google font
 
