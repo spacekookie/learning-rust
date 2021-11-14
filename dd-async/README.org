@@ -21,7 +21,7 @@
 
 * Build these slides
 
-   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/][CI artifacts]] for these
+   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these
    slides, but if you must build them yourself, you need to have Emacs
    (v26+) and org-mode installed!
 
@@ -37,6 +37,8 @@
        ;; Make sure org-reveal is loaded and set-up
        (load-library "reveal")
        (setq org-reveal-root "../.templates")
+     
+       ;; (print custom-enabled-themes)
      
        ;; Export the README
        (find-file "README.org")
