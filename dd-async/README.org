@@ -12,7 +12,8 @@
 
    + [[./010-what-is-async.org][Async theory: what is async?]]
    + [[file:020-async-in-core-std.org][Async foundations in core/std]]
-   + Writing a Future
+   + Anatomy of a basic Future
+   + [[file:50-shutdown-select.org][Future pattern: shutdown select]]
    + Runtimes
    + Excursion: scheduling
    + Excursion: channels & backpressure
