@@ -1,4 +1,4 @@
-#+Title: Async foundations in ~core~ / ~std~
+#+Title: What is async?
 #+Subtitle: We just don't know yet
 #+SETUPFILE: ../reveal.setup
 

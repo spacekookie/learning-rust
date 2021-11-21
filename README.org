@@ -1,3 +1,7 @@
+#+Title: Rust workshop material
+#+Author: Katharina Fey
+#+SETUPFILE: html.setup
+
 * Rust workshop material
 
   Welcome to the Rust teaching material repository.  This material was
@@ -9,7 +13,7 @@
   Is your company looking for teaching?  [[mailto:kookie@spacekookie.de][Contact me]] for details and
   booking!
 
-** Outline
+* Outline
 
    This repository is structured as a set of course trees.  Each tree
    focuses primarily on conveying a single aspect of the Rust
@@ -23,4 +27,16 @@
      model
    - [[./dd-async/README.org][dd-async]]     :: A deep-dive course into async development, async
      compiler internals, and runtime development in Rust
+
+* Build these slides
+
+   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/][CI artifacts]] for these
+   slides, but if you must build them yourself, you need to have Emacs
+   (v26+) and org-mode installed!
+
+   The following function will export the full course into an HTML
+   slide tree.
+   
+   #+INCLUDE: "ci/export-course.el" src emacs-lisp
+
 

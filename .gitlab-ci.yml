@@ -5,8 +5,8 @@ before_script:
   - apt-get install -y emacs tree
   - emacs --batch -l ci/setup.el
 
-build:
+deep-dive-async:
     stage: build
     script:
-      - echo "Can this run?"
-      - tree $HOME/.emacs.d/
+      - cd dd-async/
+      - emacs --batch -l ../ci/export-course.el

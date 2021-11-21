@@ -13,7 +13,7 @@
    + [[./010-what-is-async.org][Async theory: what is async?]]
    + [[file:020-async-in-core-std.org][Async foundations in core/std]]
    + Anatomy of a basic Future
-   + [[file:50-shutdown-select.org][Future pattern: shutdown select]]
+   + [[file:050-shutdown-select.org][Future pattern: shutdown select]]
    + Runtimes
    + Excursion: scheduling
    + Excursion: channels & backpressure
@@ -28,31 +28,8 @@
 
    The following function will export the full course into an HTML
    slide tree.
-   
-   #+BEGIN_SRC emacs-lisp
-     ;; TODO: swap the theme to be more easily readable on white background
-     (defun export-course ()
-       "Export a course tree as a set of HTML files"
-       (interactive)
-     
-       ;; Make sure org-reveal is loaded and set-up
-       (load-library "reveal")
-       (setq org-reveal-root "../.templates")
-     
-       ;; (print custom-enabled-themes)
-     
-       ;; Export the README
-       (find-file "README.org")
-       (org-html-export-to-html)
-     
-       ;; Then export the rest of the slides
-       (defvar slides (delete "README.org" (directory-files "." nil "\.org$" t)))
-       (mapcar
-        (lambda (file)
-          (find-file file)
-          (org-reveal-export-to-html))
-        slides))
-   #+END_SRC
+
+   #+INCLUDE: "../ci/export-course.el" src emacs-lisp
    
 * License
 
