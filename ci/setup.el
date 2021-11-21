@@ -9,4 +9,7 @@
         htmlify))
 (package-install-selected-packages)
 
+(package-refresh-contents)
+
 (save-buffers-kill-emacs)
+
