@@ -1,0 +1,7 @@
+#+Title: Rust ownership deep-dive
+#+Author: Katharina Fey
+#+SETUPFILE: ../html.setup
+
+* Introduction
+
+  This is a _beginner level_ course

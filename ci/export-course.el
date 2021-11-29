@@ -22,4 +22,3 @@
      (org-reveal-export-to-html))
    slides))
 
-(export-course)

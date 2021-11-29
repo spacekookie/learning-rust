@@ -2,14 +2,15 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 (package-initialize)
+(package-refresh-contents)
+
 (setq package-selected-packages
       '(org-mode
         ox-reveal
-        htmlify))
+        htmlize))
+
 (package-install-selected-packages)
-
-(package-refresh-contents)
-
 (save-buffers-kill-emacs)
 
