@@ -8,22 +8,9 @@
   _little to no Rust experience_.  Some _general programming_
   experience can be helpful, but is not required.
 
-  Rust is fabled to have a steep learning curve.  This is in part
-  because it is not like other languages when it comes to memory
-  management.  It doesn't rely on garbage collection like other
-  high-level languages, and doesn't burdain the user with manual
-  memory management like other low-level languages.  But this comes at
-  a cost.
-
-  This workshop will explain how to navigate this cost, understand how
-  the compiler decides which code is safe and which isn't, and how
-  these limitations can enable us to write concurrent systems without
-  race conditions.
-
-  
 * Course outline
 
-  + Memory management basics
+  + [[file:10-memory-management.org][Memory management basics]]
   + Why ownership?
   + Scopes and concurrency units
   + 

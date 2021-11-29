@@ -1,0 +1,17 @@
+#+Title: What is memory management?
+#+Subtitle: I forgot
+#+SETUPFILE: ../reveal.setup
+
+* How do computers?
+
+  + Data is stored in memory
+  + Memory is accessed by programs
+  + Manipulated by the CPU and stored back
+
+  _Computers are abstraction machines!_
+
+* Memory model
+
+  Let's introduce a model of our computer to work with!
+  
+  [[file:imgs/cpu0.png]]
