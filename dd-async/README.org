@@ -34,10 +34,9 @@
 * License
 
    This course, as well as any associated media assets is licensed
-   under the GNU Free Documentation License Version 1.3 (or later).
-   All associated code examples are licensed under the GNU General
-   Public License Version 3.0 (or later).
+   under Creative Commons CC-BY-SA 3.0.  All associated code examples
+   are licensed under the GNU General Public License Version 3.0 (or
+   later).
 
    See the [[../licenses][licenses]] directory for complete copies of the applicable
    license texts.
-

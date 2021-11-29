@@ -4,4 +4,47 @@
 
 * Introduction
 
-  This is a _beginner level_ course
+  This is an _beginner level_ course, targeted at developers who have
+  _little to no Rust experience_.  Some _general programming_
+  experience can be helpful, but is not required.
+
+  Rust is fabled to have a steep learning curve.  This is in part
+  because it is not like other languages when it comes to memory
+  management.  It doesn't rely on garbage collection like other
+  high-level languages, and doesn't burdain the user with manual
+  memory management like other low-level languages.  But this comes at
+  a cost.
+
+  This workshop will explain how to navigate this cost, understand how
+  the compiler decides which code is safe and which isn't, and how
+  these limitations can enable us to write concurrent systems without
+  race conditions.
+
+  
+* Course outline
+
+  + Memory management basics
+  + Why ownership?
+  + Scopes and concurrency units
+  + 
+
+* Build these slides
+  
+   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these
+   slides, but if you must build them yourself, you need to have Emacs
+   (v26+) and org-mode installed!
+
+   The following function will export the full course into an HTML
+   slide tree.
+
+   #+INCLUDE: "../ci/export-course.el" src emacs-lisp
+   
+* License
+
+   This course, as well as any associated media assets is licensed
+   under Creative Commons CC-BY-SA 3.0.  All associated code examples
+   are licensed under the GNU General Public License Version 3.0 (or
+   later).
+
+   See the [[../licenses][licenses]] directory for complete copies of the applicable
+   license texts.

@@ -21,4 +21,5 @@
      (find-file file)
      (org-reveal-export-to-html))
    slides))
+(provide 'export-course)
 
