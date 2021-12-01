@@ -1,72 +1,100 @@
-var buttons = '<button class="exec btn">run</button><button class="reset btn">reset</button><button class="open-in-playground btn">open</button>' + "\n";
-var result = '<span class="return"></span>';
+setTimeout(() => {
+    if (!window.added) {
+        window.added = true;
+        addButtons();
+    }
+}, 0);
 
+
+// TODO: kill jquery
 function addButtons() {
-    $('pre code.rust').each(function(i, block){
-        $(block).before(buttons);
-        $(block).after(result);
-    });
-    $('pre code.lang-rust').each(function(i, block){
-        $(block).before(buttons);
-        $(block).after(result);
-    });
+    const result = '<span class="result"></span>';
+    const buttons = `
+        <button class="exec btn">run</button>
+        <button class="open-in-playground btn">open</button>
+    `.replace(/\n( )+/g, "").trim();
+    
+    for (let block of document.querySelectorAll('pre.src-rust code')) {
+        block.insertAdjacentHTML('beforebegin', buttons);
+        block.insertAdjacentHTML('afterend', result);
+    }
 
-    $('.reset').each(function (n) {
-        $(this).context._code = $(this).siblings('code').text();
-    });
+    for (let button of document.querySelectorAll('.exec')) {
+        button.onclick = async () => {
+            const target = button.parentNode.querySelector('.result');
+            const code = button.parentNode.querySelector('code').textContent;
+            target.innerHTML = '<img src="imgs/rust.gif" style="border:none; box-shadow:none; margin: 0; background: none;">';
 
-    $('.exec').click(function () {
-        var target = $(this).siblings('.return');
-        target.html('<img src="img/rust.gif" style="border:none; box-shadow:none; margin: 0; background: none;">');
-        var code = $(this).siblings('code').text();
-        var payload = {optimize:"0", version:"stable", code: code};
-        $.ajax({
-            url: 'https://play.rust-lang.org/evaluate.json',
-            type: "POST",
-            dataType: "json",
-            data: JSON.stringify(payload),
-            contentType: "application/json"
-        }).done(function(result) {
-            var output = formatOutput(result.result);
-            console.log(result.error);
-            target.html(output);
-        });
-    });
+            const payload = { optimize: "0", version: "stable", code };
+            console.log(code);
+            console.log(payload);
+            
+            const res = await fetch('https://play.rust-lang.org/evaluate.json', {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
 
-    $('.reset').click(function () {
-        $(this).siblings('code').text($(this).context._code);
-        hljs.highlightBlock($(this).siblings('code')[0]);
-    })
+            const { result, error } = await res.json();
+            target.innerHTML = result;
+        };
+    }
+    
+    for (let button of document.querySelectorAll('.open-in-playground')) {
+        button.onclick = () => {
+            const code = extendCode(button.parentNode.querySelector('code').textContent);
+            const payload = encodeURIComponent(code);
+            const url = `https://play.rust-lang.org/?version=stable&code=${payload}`;
 
-    $('.open-in-playground').click(function () {
-        var code = $(this).siblings('code').text();
-        var baseUrl = 'https://play.rust-lang.org/?version=stable&code=';
-        var code = extendCode(code);
-        var payload = encodeURIComponent(code);
-        var url = baseUrl + payload;
-
-        window.open(url, '_blank');
-    });
-    $('.versionable').blur(function () {
-        console.log('versioning comming soon')
-    });
+            window.open(url, '_blank');
+        };
+    }
 }
 
-formatOutput = function (output) {
-    var parts = output.split(/\n/);
-    return parts.join('<br>');
-}
 
-extendCode = function (code) {
-    window.code = code
-    console.log(code)
-    console.log("matching fn", code.match(/^fn \w+/))
-    console.log("matching main", code.match(/^fn main/))
-    // No functions, wrap all in main
-    if (!code.match(/^fn \w+/m)) {
+
+function extendCode(code) {
+    if (!code.match(/^fn \w+/m)) { // No functions, wrap all in main
         code = "fn main() {\n" + code + "\n}"
     } else if (!code.match(/^fn main/m)) { // some functions, no main, add an empty one
         code = code + "\n\nfn main() {}";
     }
     return code;
 }
+
+    
+    // $('pre code.rust').each(function(i, block){
+    //     $(block).before(buttons);
+    //     $(block).after(result);
+    // });
+    // $('pre code.lang-rust').each(function(i, block){
+    //     $(block).before(buttons);
+    //     $(block).after(result);
+    // });
+
+    // $('.reset').each(function (n) {
+    //     $(this).context._code = $(this).siblings('code').text();
+    // });
+
+    // $('.exec').click(function () {
+
+    // });
+
+    // $('.reset').click(function () {
+    //     $(this).siblings('code').text($(this).context._code);
+    //     hljs.highlightBlock($(this).siblings('code')[0]);
+    // })
+
+
+    // $('.versionable').blur(function () {
+    //     console.log('versioning comming soon')
+    // });
+// }
+
+// formatOutput = function (output) {
+//     var parts = output.split(/\n/);
+//     return parts.join('<br>');
+// }
+
