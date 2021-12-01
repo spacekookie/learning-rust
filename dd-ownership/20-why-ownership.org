@@ -1,0 +1,182 @@
+#+Title: Why ownership?
+#+Subtitle: ☭☭☭
+#+SETUPFILE: ../reveal.setup
+
+* Fundamental design
+
+  + Every value has exactly one owner
+  + Memory is cleaned up by the **owner**
+  + Ownership can be passed on
+  + Memory may be borrowed (according to rules)
+  + Memory can't be cleaned up if borrowed
+
+* _These rules are a fundamental part of the Rust type system_
+
+* Example #1
+
+  TODO: make this run on play.rust-lang.org!
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Dot {
+        x: i64,
+        y: i64,
+    }
+    
+    fn main() {
+        let dot = Dot { x: 2, y: 1 };
+        pacman(dot);
+    }
+    
+    fn pacman(dot: Dot) {
+        println!("Eating {:?}", dot);
+    }
+  #+END_SRC
+
+* Quiz #1
+
+  What happens if we call '~pacman(dot)~' twice?
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Dot {
+        x: i64,
+        y: i64,
+    }
+    
+    fn main() {
+        let dot = Dot { x: 2, y: 1 };
+        pacman(dot);
+        pacman(dot);
+    }
+    
+    fn pacman(dot: Dot) {
+        println!("Eating {:?}", dot);
+    }
+  #+END_SRC
+* Quiz #1 - Answer
+
+  We attempt to move ownership twice and compilation fails!
+  
+  #+BEGIN_SRC none
+      Compiling playground v0.0.1 (/playground)
+    error[E0277]: `Dot` doesn't implement `Debug`
+      --> src/main.rs:13:33
+       |
+    13 |         println!("Eating {:?}", dot);
+       |                                 ^^^ `Dot` cannot be formatted using `{:?}`
+       |
+       = help: the trait `Debug` is not implemented for `Dot`
+       = note: add `#[derive(Debug)]` to `Dot` or manually `impl Debug for Dot`
+       = note: this error originates in the macro `$crate::format_args_nl` (in Nightly builds, run with -Z macro-backtrace for more info)
+    
+    For more information about this error, try `rustc --explain E0277`.
+    error: could not compile `playground` due to previous error
+  #+END_SRC
+
+* Quiz #1 - Answer
+
+  When we call ~pacman~ ownership is moved. When ~pacman~ function ends the value is dropped.
+  
+  #+BEGIN_SRC dot :file imgs/gen/move-owner.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR"
+    
+        main [color=darkgreen, shape=box]
+        pacman [color=darkgreen, shape=box]
+        🗑️ [color=red, shape=box]
+        main -> pacman -> 🗑️;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:imgs/gen/move-owner.png]]
+
+* 
+
+  To get around this, we can explicitly clone ~Dot~!
+
+  #+BEGIN_SRC rust
+    #[derive(Debug, Clone)] // <-- implement Clone
+    struct Dot {
+        x: i64,
+        y: i64,
+    }
+    
+    fn main() {
+        let dot = Dot { x: 2, y: 1 };
+        pacman(dot.clone()); // <-- Clone 'dot'
+        pacman(dot);
+    }
+    
+    fn pacman(dot: Dot) {
+        println!("Eating {:?}", dot);
+    }
+  #+END_SRC
+
+* 
+
+  #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR"
+        
+        main [color=darkgreen, shape=box]
+        clone [color=teal, shape=box]
+        pacman1 [label="pacman", color=darkgreen, shape=box]
+        pacman2 [label="pacman", color=darkgreen, shape=box]    
+        drop1 [label="🗑️", color=red, shape=box]
+        drop2 [label="🗑️", color=red, shape=box]
+        main -> pacman1 -> drop1;
+        main -> clone -> pacman2 -> drop2;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:imgs/gen/clone-move.png]]
+
+  
+* Ownership lifecycle
+
+  + Ownership is bound to a "scope"
+  + Memory is freed when owner goes out of scope
+  + ~core::mem::drop(...)~ can do this explicitly
+
+  _Quiz #2: how is ~drop(...)~ implemented?_
+
+* Quiz #2 - Answer
+
+  + ~drop(...)~ takes ownership of any generic type
+  + Then does absolutely nothing
+  + ~rustc~ will (_at compile time_) insert statements to free memory
+    at the end of this function scope
+  
+  #+BEGIN_SRC rust
+    /// Takes any type and drops it
+    fn drop<T>(_x: T) {}
+  #+END_SRC
+
+* Borrowing
+
+  + Any owner can hand out borrows to a piece of data
+  + Borrowing follows specific rules
+    + Unlimited number of immutable borrows
+    + Or: _one_ mutable borrow
+  + This prevents unexpected changes to memory
+
+* Scenario 1: mutability
+
+  Let's look at the effects of mutable memory
+
+  file:imgs/cpu0.png
+  
+* Scenario 1: mutability
+
+  
+  
+* Summary
+
+  + Boop boop boop
+
+  [[file:README.org][Back to index]]

@@ -28,4 +28,5 @@ This file contains common reveal.js export settings for org-mode.
    We also customise the title slide to have a link back to the ../README.org!
    
    #+REVEAL_TITLE_SLIDE: <h1>%t</h1> <p>%s</p> <br/> <a href="README.html">Back to index</a>
-   
+
+   #+REVEAL_PLUGINS: highlight
