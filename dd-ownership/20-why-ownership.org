@@ -4,7 +4,7 @@
 
 * Fundamental design
 
-  + Every value has exactly one owner
+  + Every value has exactly **one owner**
   + Memory is cleaned up by the **owner**
   + Ownership can be passed on
   + Memory may be borrowed (according to rules)
@@ -12,7 +12,7 @@
 
 * _These rules are a fundamental part of the Rust type system_
 
-* Example #1
+* Example
 
   TODO: make this run on play.rust-lang.org!
   
@@ -25,6 +25,7 @@
     
     fn main() {
         let dot = Dot { x: 2, y: 1 };
+    
         pacman(dot);
     }
     
@@ -54,25 +55,6 @@
         println!("Eating {:?}", dot);
     }
   #+END_SRC
-* Quiz #1 - Answer
-
-  We attempt to move ownership twice and compilation fails!
-  
-  #+BEGIN_SRC none
-      Compiling playground v0.0.1 (/playground)
-    error[E0277]: `Dot` doesn't implement `Debug`
-      --> src/main.rs:13:33
-       |
-    13 |         println!("Eating {:?}", dot);
-       |                                 ^^^ `Dot` cannot be formatted using `{:?}`
-       |
-       = help: the trait `Debug` is not implemented for `Dot`
-       = note: add `#[derive(Debug)]` to `Dot` or manually `impl Debug for Dot`
-       = note: this error originates in the macro `$crate::format_args_nl` (in Nightly builds, run with -Z macro-backtrace for more info)
-    
-    For more information about this error, try `rustc --explain E0277`.
-    error: could not compile `playground` due to previous error
-  #+END_SRC
 
 * Quiz #1 - Answer
 
@@ -93,7 +75,7 @@
   #+RESULTS:
   [[file:imgs/gen/move-owner.png]]
 
-* 
+* Cloning technology
 
   To get around this, we can explicitly clone ~Dot~!
 
@@ -115,7 +97,7 @@
     }
   #+END_SRC
 
-* 
+* Cloning technology
 
   #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
     digraph {
@@ -136,47 +118,98 @@
   #+RESULTS:
   [[file:imgs/gen/clone-move.png]]
 
+* _Cloning is always a deep-clone and can become costly!_
+
+* ~Copy~ vs ~Clone~
+
+  Alternatively types can implement ~Copy~!  This is meant for data
+  that can be quickly copied in-memory (using ~memcopy~) and are
+  allowed to be copied.
+
+  #+BEGIN_SRC rust
+    #[derive(Copy, Debug)]
+    struct Dot { x: i64, y: i64 }
+    
+    fn main() {
+        let dot = Dot { x: 2, y: 1 };
+        pacman(dot); // <-- Implicitly copy dot here
+        pacman(dot);    
+    }
+    
+    fn pacman(dot: Dot) {
+        println!("Eating {:?}", dot);
+    }
+  #+END_SRC
+
+* Quiz #2
+
+  What happens if we call ~use_file~ twice?
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let f = File::open("test.txt").unwrap();
+    
+        use_file(f);
+        use_file(f);
+    }
+    
+    fn use_file(f: File) {
+        // ... do some stuff
+    }
+  #+END_SRC
   
-* Ownership lifecycle
+* Quiz #3
 
-  + Ownership is bound to a "scope"
-  + Memory is freed when owner goes out of scope
-  + ~core::mem::drop(...)~ can do this explicitly
+  How is ~core::mem::drop~ implemented?
+  
+  #+BEGIN_SRC rust
+    fn main() {
+        let f = File::open("test.txt").unwrap();
+        drop(f);
+    
+        // 'f' no longer available!
+    }
+  #+END_SRC
 
-  _Quiz #2: how is ~drop(...)~ implemented?_
-
-* Quiz #2 - Answer
+* Quiz #3 - Answer
 
   + ~drop(...)~ takes ownership of any generic type
   + Then does absolutely nothing
-  + ~rustc~ will (_at compile time_) insert statements to free memory
+  + ~rustc~ will ( _at compile time_ ) insert statements to free memory
     at the end of this function scope
   
   #+BEGIN_SRC rust
-    /// Takes any type and drops it
-    fn drop<T>(_x: T) {}
+    #[inline]
+    fn drop<T>(_x: T) {
+        /// take ownership, drop out of scope
+    }
   #+END_SRC
 
-* Borrowing
+* Ownership scopes
 
-  + Any owner can hand out borrows to a piece of data
-  + Borrowing follows specific rules
-    + Unlimited number of immutable borrows
-    + Or: _one_ mutable borrow
-  + This prevents unexpected changes to memory
+  + An owning type
+  + An owning function
+  + An owning ~{ }~ scope
 
-* Scenario 1: mutability
+  #+BEGIN_SRC rust
+    struct MyStruct {
+        // They who own MyStruct control the String
+        txt: String,
+    }
+    
+    fn function_scope() {
+        let s = String::from("Hello function"); println!("{}", s);
+        // s goes out of scope here
+    
+        {
+            let s2 = String::from("Hello scope"); println!("{}", s2);
+            // s2 goes out of scope here
+        }
+    }
+  #+END_SRC
 
-  Let's look at the effects of mutable memory
+* In conclusion
 
-  file:imgs/cpu0.png
+  Ownership allows the compiler to _reason about our code_
   
-* Scenario 1: mutability
-
-  
-  
-* Summary
-
-  + Boop boop boop
-
   [[file:README.org][Back to index]]

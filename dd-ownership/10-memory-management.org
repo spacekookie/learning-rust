@@ -58,7 +58,7 @@
   
   file:imgs/uaf1.png
 
-* Scenario 2: user after free
+* Scenario 2: use after free
 
   Now we do something silly and try to use the memory anyway
 
@@ -77,13 +77,13 @@
   + When no more references to a piece of memory exist, we clean it up
   + This is done by a special runtime called _Garbage collector_
 
-* Sceranio 3: garbage collection
+* Scenario 3: garbage collection
 
   We start with an empty call-stack and (mostly) empty heap
   
   file:imgs/cpu0.png
 
-* Sceranio 3: garbage collection
+* Scenario 3: garbage collection
 
   Instead of _allocating memory_ we _create a string_
   

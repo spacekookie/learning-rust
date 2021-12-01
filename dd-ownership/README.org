@@ -12,7 +12,7 @@
 
   + [[file:10-memory-management.org][Memory management basics]]
   + [[file:20-why-ownership.org][Why ownership?]]
-  + Scopes and concurrency units
+  + [[file:25-ownership-quiz.org][Exercise: taking ownership]]
   + 
 
 * Build these slides

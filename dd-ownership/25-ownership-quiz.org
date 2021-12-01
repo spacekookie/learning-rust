@@ -1,0 +1,64 @@
+#+Title: Exercise: seizing ownership
+#+SETUPFILE: ../reveal.setup
+
+* 
+
+  In these exercises you need to apply the ownership principles
+  introduced in the last slide deck to make the demos work.
+
+  https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-ownership/examples/ownership
+
+* 
+
+  **Q:** Why does this code not compile?
+  
+  #+BEGIN_SRC rust
+    fn main() {
+        {
+            let x = 42;
+            println!("x: {}", x);
+        }
+    
+        println!("x: {}", x);
+    }
+  #+END_SRC
+
+* 
+
+  **Q:** In what order are the statements printed?
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)] struct DropMe;
+    
+    impl Drop for DropMe {
+        fn drop(&mut self) {
+            println!("Dropping 'DropMe'");
+        }
+    }
+    
+    fn main() {
+        println!("Start");
+        {
+            let x = DropMe;
+            println!("x: {:?}", x);
+        }
+    
+        println!("End");
+    }
+  #+END_SRC
+
+* 
+
+  **Q:** Why does this code not compile?
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let a = vec![1, 2, 3];
+        let b = a;
+    
+        println!("vec: {:?}", a);
+    }
+  #+END_SRC
+
+* 
+
