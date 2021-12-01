@@ -1,7 +1,10 @@
-#+Title: What is async?
-#+Subtitle: We just don't know yet
+#+Title: Async in Rust
 #+SETUPFILE: ../reveal.setup
 
-* Async foundations in ~core~ / ~std~
+* Async foundations in ~core~
 
-  Bla bla bla
+  + Rust's ~libcore~ gained async capabilities in 1.666
+  + Provides mechanisms to handle futures
+  + No actual runtime!
+
+* 

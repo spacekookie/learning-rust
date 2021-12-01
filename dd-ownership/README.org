@@ -11,7 +11,7 @@
 * Course outline
 
   + [[file:10-memory-management.org][Memory management basics]]
-  + Why ownership?
+  + [[file:20-why-ownership.org][Why ownership?]]
   + Scopes and concurrency units
   + 
 

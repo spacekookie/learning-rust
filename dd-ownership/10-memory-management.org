@@ -2,16 +2,115 @@
 #+Subtitle: I forgot
 #+SETUPFILE: ../reveal.setup
 
-* How do computers?
+* Why is memory management important?
 
-  + Data is stored in memory
-  + Memory is accessed by programs
-  + Manipulated by the CPU and stored back
+  + Computer programs are fundamentally about managing memory
+    + Even if it sometimes doesn't seem like this
+  + Bad memory management can have very bad consequences
+    + Most security vulnerabilities are caused by bad memory management
+    + Bad memory management can massively impact performance
 
-  _Computers are abstraction machines!_
-
+  #+BEGIN_NOTES
+    + [ ] Add security citations
+    + [ ] Rephrase second section
+  #+END_NOTES
+  
+* _Computers are abstraction machines_
+  
 * Memory model
 
-  Let's introduce a model of our computer to work with!
+  In the following slide-decks we will use a model of memory to
+  demonstrate scenarios.
+
+  + Memory is split into _Heap_ and _Stack_
+    + Stack stores local variables and function call data
+    + Heap stores program data and dynamic allocations
+  + We keep track of important variables and function calls
+  + What the CPU does exactly is not important
+
+* Scenario 1: allocate memory
+
+  Initially we only have our currenty function call on the stack
+
+  file:imgs/cpu0.png
   
-  [[file:imgs/cpu0.png]]
+* Scenario 1: allocate memory
+
+  We allocate some memory on the heap
+
+  file:imgs/cpu1.png
+
+* Scenario 1: allocate memory
+
+  Other function calls can then use this memory
+
+  file:imgs/cpu2.png
+  
+* Scenario 2: use after free
+
+  In this scenario we start with some allocated memory
+  
+  file:imgs/uaf0.png
+
+* Scenario 2: use after free
+
+  We now call ~free~ to de-allocate the memory again
+  
+  file:imgs/uaf1.png
+
+* Scenario 2: user after free
+
+  Now we do something silly and try to use the memory anyway
+
+  file:imgs/uaf2.png
+
+* Manual memory management
+
+  + Expecting the user to manage memory _can_ be beneficial to performance
+  + Most likely it will be bad for _stability_ and _security_!
+  + What is the alternative?
+
+* Garbage collection
+
+  + Instead of making the user free memory themselves, "we" (the
+    program) count references
+  + When no more references to a piece of memory exist, we clean it up
+  + This is done by a special runtime called _Garbage collector_
+
+* Sceranio 3: garbage collection
+
+  We start with an empty call-stack and (mostly) empty heap
+  
+  file:imgs/cpu0.png
+
+* Sceranio 3: garbage collection
+
+  Instead of _allocating memory_ we _create a string_
+  
+  file:imgs/gc1.png
+
+* Scenario 3: garbage collection
+
+  Increment the use-count when using the string to create a new object
+  
+  file:imgs/gc2.png
+
+* Scenario 3: garbage collection
+
+  When the function returns the stack usage is removed
+  
+  file:imgs/gc3.png
+
+* Scenario 3: garbage collection
+
+  At some point the garbage collector cleans of ~foo~ and the string
+
+  file:imgs/gc4.png
+
+* Summary
+
+  + Memory management is fundamental to writing code
+  + Either very explicit or hidden, depending on programming language
+  + What does Rust do?  Neither of the two introduced approaches!
+
+  [[file:README.org][Back to index]]
