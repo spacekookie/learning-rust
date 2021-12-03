@@ -15,8 +15,10 @@
     + [ ] Rephrase second section
   #+END_NOTES
   
+
 * _Computers are abstraction machines_
   
+
 * Memory model
 
   In the following slide-decks we will use a model of memory to
@@ -28,29 +30,45 @@
   + We keep track of important variables and function calls
   + What the CPU does exactly is not important
 
+
 * Scenario 1: allocate memory
 
   Initially we only have our currenty function call on the stack
 
   file:imgs/cpu0.png
   
+
 * Scenario 1: allocate memory
 
   We allocate some memory on the heap
 
   file:imgs/cpu1.png
 
+
 * Scenario 1: allocate memory
 
   Other function calls can then use this memory
 
   file:imgs/cpu2.png
+
+
+* _This is manual memory management_
   
+
+* Manual memory management
+
+  + All memory is allocated and de-allocated by the user
+  + Use pointers explicitly to refer to data
+  + Very "low level"
+  + What could go wrong? :)
+  
+
 * Scenario 2: use after free
 
   In this scenario we start with some allocated memory
   
   file:imgs/uaf0.png
+
 
 * Scenario 2: use after free
 
@@ -58,11 +76,13 @@
   
   file:imgs/uaf1.png
 
+
 * Scenario 2: use after free
 
   Now we do something silly and try to use the memory anyway
 
   file:imgs/uaf2.png
+
 
 * Manual memory management
 
@@ -70,18 +90,25 @@
   + Most likely it will be bad for _stability_ and _security_!
   + What is the alternative?
 
+
+* Garbage collection
+
+
 * Garbage collection
 
   + Instead of making the user free memory themselves, "we" (the
-    program) count references
-  + When no more references to a piece of memory exist, we clean it up
+    program) counts memory/ object "references"
+  + When no more references to a piece of memory exist, that object
+    can be removed
   + This is done by a special runtime called _Garbage collector_
+
 
 * Scenario 3: garbage collection
 
   We start with an empty call-stack and (mostly) empty heap
   
-  file:imgs/cpu0.png
+  file:imgs/gc0.png
+
 
 * Scenario 3: garbage collection
 
@@ -89,11 +116,13 @@
   
   file:imgs/gc1.png
 
+
 * Scenario 3: garbage collection
 
   Increment the use-count when using the string to create a new object
   
   file:imgs/gc2.png
+
 
 * Scenario 3: garbage collection
 
@@ -101,16 +130,45 @@
   
   file:imgs/gc3.png
 
+
 * Scenario 3: garbage collection
 
-  At some point the garbage collector cleans of ~foo~ and the string
+  At some point in the future the ~Foo~ object goes out of scope
+  
+  file:imgs/gc4.png
+
+
+* Scenario 3: garbage collection
+
+  Which then also triggers the string to go out of scopen
+  
+  file:imgs/gc5.png
+
+
+* Scenario 3: garbage collection
+
+  And memory is empty again
+  
+  file:imgs/gc6.png
+
+
+* Scenario 3: garbage collection
+
+  At some point the garbage collector cleans up the ~foo~ object and
+  the our string object is cleaned up as well
 
   file:imgs/gc4.png
 
-* Summary
 
+* Summary
+  
   + Memory management is fundamental to writing code
-  + Either very explicit or hidden, depending on programming language
-  + What does Rust do?  Neither of the two introduced approaches!
+  + Impacts language usability and program stability/ security
+  + Vastly different design philosophies exist
+    + Explicit model: use ~malloc~ and ~free~ directly
+    + Implicit model: hide memory allocations behind objects and
+      reference counting
+
+  **What does Rust do?**
 
   [[file:README.org][Back to index]]

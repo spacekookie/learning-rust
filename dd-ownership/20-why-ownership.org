@@ -14,7 +14,7 @@
 
 * Example
 
-  TODO: make this run on play.rust-lang.org!
+  We create a ~Dot~ and let pacman eat it.  nom nom nom!
   
   #+BEGIN_SRC rust
     #[derive(Debug)]
@@ -99,20 +99,23 @@
 
 * Cloning technology
 
+  #+RESULTS:
+  : foo
+    
   #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
-    digraph {
-        node [shape=box, fontsize=24, margin="0.25,0.25"]
-        rankdir = "LR"
-        
-        main [color=darkgreen, shape=box]
-        clone [color=teal, shape=box]
-        pacman1 [label="pacman", color=darkgreen, shape=box]
-        pacman2 [label="pacman", color=darkgreen, shape=box]    
-        drop1 [label="🗑️", color=red, shape=box]
-        drop2 [label="🗑️", color=red, shape=box]
-        main -> pacman1 -> drop1;
-        main -> clone -> pacman2 -> drop2;
-    }
+      digraph {
+          node [shape=box, fontsize=24, margin="0.25,0.25"]
+          rankdir = "LR"
+    
+          main [color=darkgreen, shape=box]
+          clone [color=teal, shape=box]
+          pacman1 [label="pacman", color=darkgreen, shape=box]
+          pacman2 [label="pacman", color=darkgreen, shape=box]    
+          drop1 [label="🗑️", color=red, shape=box]
+          drop2 [label="🗑️", color=red, shape=box]
+          main -> pacman1 -> drop1;
+          main -> clone -> pacman2 -> drop2;
+      }
   #+END_SRC
 
   #+RESULTS:
@@ -127,7 +130,7 @@
   allowed to be copied.
 
   #+BEGIN_SRC rust
-    #[derive(Copy, Debug)]
+    #[derive(Copy, Clone, Debug)]
     struct Dot { x: i64, y: i64 }
     
     fn main() {
@@ -146,6 +149,8 @@
   What happens if we call ~use_file~ twice?
 
   #+BEGIN_SRC rust
+    use std::fs::File;
+    
     fn main() {
         let f = File::open("test.txt").unwrap();
     
@@ -163,6 +168,8 @@
   How is ~core::mem::drop~ implemented?
   
   #+BEGIN_SRC rust
+    use std::fs::File;
+    
     fn main() {
         let f = File::open("test.txt").unwrap();
         drop(f);
