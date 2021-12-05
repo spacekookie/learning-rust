@@ -1,0 +1,83 @@
+#+Title: Concurrency Patterns
+#+Subtitle: Channels
+#+SETUPFILE: ../reveal.setup
+
+* 
+
+/“Do not communicate by sharing memory; instead, share memory by communicating.”/
+
+-- someone, somewhere, sometime
+
+* 
+
+A lot of complicated ownership models become redundant when you use
+channels to pass messages between threads
+
+* ~stdlib~ provides some simple channels
+
+  + These are not very good
+  + Personally I recommend ~crossbeam_channel~ or ~flume~
+  + Channels of course exist on the heap somewhere
+    + But access control is much simpler
+
+* 
+
+  file:imgs/channel0.png
+
+* 
+
+  file:imgs/channel1.png
+
+* 
+
+  file:imgs/channel2.png
+
+* 
+
+  file:imgs/channel3.png
+
+* 
+
+  file:imgs/channel2.png
+
+* 
+
+  file:imgs/channel4.png
+
+* Channels in ~std~
+
+  + mpsc: multi-producer, single-consumer
+  
+  #+BEGIN_SRC rust
+    use std::sync::mpsc;
+    
+    fn main() {
+        let (tx, rx) = mpsc::channel();
+    
+        tx.send(String::from("E C H O   ECHO   echo   ᵉᶜʰᵒ"));
+    
+        let msg = rx.recv().unwrap();
+        println!("The cave goes {}", msg);
+    }
+  #+END_SRC
+
+* Channel senders can be shared across threads!
+
+  + Easily connect data structures together
+  + ~rx.recv()~ will block until _all_ senders have gone away
+
+  #+BEGIN_SRC rust
+    use std::{sync::mpsc, thread};
+    
+    fn main() {
+        let (tx, rx) = mpsc::channel();
+        thread::spawn(move || {
+            tx.send(String::from("Hello from another thread!"));
+        });
+    
+        let msg = rx.recv().unwrap();
+        println!("Message: {}", msg);
+    }
+  #+END_SRC
+
+*  [[file:README.org][Back to index]]

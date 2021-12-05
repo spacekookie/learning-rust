@@ -1,0 +1,75 @@
+#+Title: Concurrency Patterns
+#+Subtitle: ~Arc~ and ~Mutex~
+#+SETUPFILE: ../reveal.setup
+
+* In the previous exercise you used Arc and Mutex
+
+* ~Arc~
+
+  + Provides a way for multiple references to point to the same
+    location in memory
+  + Uses atomics to synchronise threads
+
+* 
+
+  file:imgs/arc0.png
+
+* 
+
+  file:imgs/arc1.png
+
+* 
+
+  file:imgs/arc2.png
+
+* 
+
+  file:imgs/arc3.png
+
+* 
+
+  file:imgs/arc4.png
+
+* ~Mutex~
+
+  + Provides interior mutability
+  + Only one access to ~lock()~ allowed at a time
+    + Implements ~Sync<T>~ for any ~T~
+    + Thus provides thread-safety for types that don't have any of
+      their own
+
+* Quiz
+
+  Which of these two types makes sense, which does not?
+
+  + ~Arc<Mutex<Vec<String>>~ :: A list of Strings, wrapped in a Mutex,
+    wrapped in an Arc
+  + ~Mutex<Arc<Vec<String>>>~ :: A list of Strings, wrapped in an Arc,
+    wrapped in a Mutex
+
+* 
+
+  ~Arc~ removes concurrent mutability.  ~Mutex~ provides it.
+
+* These guarantees apply even when not immediately nested!
+
+* 
+
+  #+BEGIN_SRC rust
+    use std::collections::VecDeque;
+    use std::sync{Arc, Mutex};
+    
+    pub struct Mailbox {
+        inner: Mutex<VecDeque<String>>,
+    }
+    
+    impl Mailbox {
+        pub fn new() -> Arc<Self> {
+            Arc::new(Self {
+                inner: Mutex::new(VecDeque::new())
+            })
+        }       
+    }
+  #+END_SRC
+
+*  [[file:README.org][Back to index]]

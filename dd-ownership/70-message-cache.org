@@ -1,0 +1,103 @@
+#+Title: Network message cache
+#+Subtitle: It's basically redis
+#+SETUPFILE: ../reveal.setup
+
+* Let's put all this together!
+
+* Overview
+
+  + Accept TCP connections on one thread
+  + Send message payload to parsing threads
+  + Poll for updates on a consumer thread
+
+* Accept TCP connections
+
+  + ~std::net~ has you covered
+
+  #+BEGIN_SRC rust
+    let listener = TcpListener::bind("127.0.0.1:6000")?;
+    for stream in listener.incoming() {
+        handle_connection(&mut stream?, &mut pool);
+    }
+  #+END_SRC
+  
+* Payloads
+
+  + Let's parse some JSON
+  + Use ~serde~ and ~serde_json~ crates for this
+  + Specify some type ~Payload~ that acts as a data model
+
+  #+BEGIN_SRC rust
+    #[derive(Serialize, Deserialize)]
+    struct Payload {
+        msg: String,
+        sev: Option<u8>,
+    }
+  #+END_SRC
+
+* Extra credit: work scheduler
+
+  + Wouldn't it be cool if we sent work to a thread for parsing?
+  + This has real advantages: a long parse time won't block new
+    connections!
+
+  #+BEGIN_SRC rust
+    pub struct WorkPool {
+        ring: VecDeque<Sender<Vec<u8>>>,
+    }
+    
+    impl WorkPool {
+        /// TODO: also provide a handle to mailbox
+        pub fn new(num: u8) -> Self {
+            todo!()
+        }
+    
+        /// TODO: implement round-robin strategy
+        pub fn queue(&mut self, buf: Vec<u8>) {}
+    }
+  #+END_SRC
+
+* Alternatively
+
+  + Parse the incoming payload
+  + Then queue it into the mailbox
+
+  #+BEGIN_SRC rust
+    match serde_json::from_slice::<Payload>(&vec) {
+        Ok(msg) => { /* TODO: queue payload in mailbox */ }
+        Err(e) => {
+            eprintln!("Received invalid payload: '{}'!", e);
+        }
+    }
+  #+END_SRC
+
+* Lastly
+
+  + Spawn a thread that polls the mailbox for updates in set intervals
+
+  #+BEGIN_SRC rust
+    pub struct MessageConsumer {
+        dur: Duration,
+        // TODO: add reference to your mailbox here
+    }
+    
+    impl MessageConsumer {
+        // ...
+    
+        fn run(self) {
+            thread::spawn(move || {
+                // TODO: Get _all_ new messages as a chunk
+    
+                // Then sleep for a while
+                sleep(self.dur.clone()).unwrap();
+            })
+        }
+    }
+  #+END_SRC
+
+* More details in the repository!
+
+  https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-ownership/exercises/network-mailbox
+
+
+* [[file:README.org][Back to index]]

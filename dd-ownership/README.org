@@ -20,9 +20,9 @@
   + [[file:50-threading.org][Threading & Ownership]]
   + [[file:51-race-conditians.org][Thoughts on race conditions]]
   + [[file:55-thread-exercises.org][Exercise: concurrently borrowing stuff]]
-  + Concurrency patterns: Arc & Mutex
-  + Concurrency patterns: Channels
-  + Advanced Exercise: Load-balanced web server
+  + [[file:60-patterns-arc-mutex.org][Concurrency patterns: Arc & Mutex]]
+  + [[file:65-patterns-channels.org][Concurrency patterns: Channels]]
+  + [[file:70-message-cache.org][Exercise: Network message cache]]
 
   \\
 
