@@ -12,14 +12,18 @@
 
    + [[./010-what-is-async.org][Async theory: what is async?]]
    + [[file:020-async-in-core-std.org][Async foundations in core/std]]
-   + Anatomy of a basic Future
-   + [[file:050-shutdown-select.org][Future pattern: shutdown select]]
-   + Runtimes
+   + [[file:030-future-anatomy.org][Anatomy of a basic Future]]
+   + [[file:040-shutdown-select.org][Future pattern: shutdown select]]
+   + [[file:50-runtimes.org][Runtimes]]
    + Excursion: scheduling
    + Excursion: channels & backpressure
    + Tasks, futures, and threads
-   + 
 
+   \\
+
+   + [[https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-async/exercises][Exercise overview]]
+
+   
 * Build these slides
 
    It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these

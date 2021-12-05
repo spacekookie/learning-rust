@@ -3,8 +3,112 @@
 
 * Async foundations in ~core~
 
-  + Rust's ~libcore~ gained async capabilities in 1.666
+  + Rust's ~libcore~ gained async capabilities in 1.39
   + Provides mechanisms to handle futures
   + No actual runtime!
 
-* 
+* Lazy futures
+
+  + In Rust all ~Future~ types are lazy
+  + That means they don't "make progress" unless polled
+  + This is different in other runtime systems
+
+* Future lifecycle
+
+  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR";
+    
+        new [color=darkgreen, shape=box]
+        poll [color=teal, shape=box]
+        yield [color=orange, shape=box]
+        wake [color=teal, shape=box]
+        huh [label="?", color=darkgreen]
+        resolve [color=green, shape=box]
+        new -> poll -> yield;
+        wake -> poll;
+        huh -> wake [style="dashed"];
+        poll -> resolve;
+    }
+  #+END_SRC
+
+
+* The important types at a glance
+
+  These can be found in ~core::future~ and ~core::task~
+  
+  + ~Future~ :: Primary future abstraction trait
+  + ~Poll~ :: Enum to indicate runtime completion of a future
+  + ~Waker~ :: A mechanism to wake up a future after it has yielded
+
+* Future vs Task
+
+  Think of a Future as a single step in a chain of async operations.
+
+  A task is the chain.
+
+* No runtime in ~std~!
+
+  + Rust doesn't include a runtime in its std library (for good reason!)
+  + In this workshop we will use both ~tokio~ and ~async-std~ interchangably
+    + Their APIs only vary in very niche cases
+
+* ~tokio~
+
+  + Probably needs to introduction
+  + Created in 2016 by Carl Lerche
+
+  #+BEGIN_SRC toml
+  [dependencies]
+  tokio = { version = "1.0", features = ["full"] }
+  #+END_SRC
+
+  #+BEGIN_SRC rust
+    #[tokio::main]
+    async fn main() {
+        // your async code here
+    }
+  #+END_SRC
+
+* ~async-std~
+
+  + Created in 2019 by Stjepan Glavina
+  + Maintained by the "Async Rust WG"
+
+  #+BEGIN_SRC toml
+    [dependencies]
+    async-std = { version = "1.0", features = ["attribute"] }
+  #+END_SRC
+
+  #+BEGIN_SRC rust
+    #[async_std::main]
+    async fn main() {
+        // your async code here
+    }
+  #+END_SRC
+
+* ~smol-rs~
+
+  + The actual event reactor behind ~async-std~!
+  + A bit more clumbsy to use, but just as powerful
+  + This makes it more embeddable
+
+  #+BEGIN_SRC rust
+    fn main() {
+        smol::block_on(async {
+            // your async code here
+        });
+    }
+  #+END_SRC
+
+* Different runtimes focus on different UX strategies
+
+* Examples
+
+  The Rust playground will be somewhat useless in these slides.  Run
+  your own examples!
+  
+  https://teach.spacekookie.de/async
+
+* [[file:README.org][Back to index]]

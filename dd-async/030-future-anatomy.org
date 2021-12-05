@@ -1,0 +1,193 @@
+#+Title: Anatomy of a future
+#+SETUPFILE: ../reveal.setup
+
+* Lifecycle
+
+  file:imgs/gen/future-lifecycle.png
+
+* Future trait
+
+  + ~Output~ type is whatever the future produces
+  + ~Pin~ is a memory safety type
+  + ~Context~ is a generic way for the runtime to provide ... context :)
+  
+  #+BEGIN_SRC rust
+    pub trait Future {
+        type Output;
+        fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>;
+    }
+  #+END_SRC
+
+* Writing a simple future
+
+  A simple future which will never complete
+
+   #+INCLUDE: "exercises/future-anatomy/src/never.rs" src rust
+
+* Await progress
+
+  + In this example we're using ~async-std~
+  + You can run this example via /~cargo run --bin 01_never~/
+
+  #+INCLUDE: "exercises/future-anatomy/src/bin/01_never.rs" src rust
+
+* So what's up with ~Pin~?
+
+** Pin side-track
+
+  + Pin is a way to instruct the Rust compiler to not allow moving of objects
+  + Futures (internally) require self-referential structs
+  + Self-referential structs are a bit problematic
+  + ~Pin~ removes the ability for a type to be moved so that self-references remain valid
+
+** 
+
+  #+BEGIN_SRC rust
+    let sql: String = format!("SELECT FROM users WHERE usersname = {}", user);
+    let db_resp = self.query(&sql).await;
+  #+END_SRC
+    
+  file:imgs/pin10.png
+  
+** 
+
+  #+BEGIN_SRC rust
+    let sql: String = format!("SELECT FROM users WHERE usersname = {}", user);
+    let db_resp = self.query(&sql).await; // <-- creates a 'DbFuture' behind the scenes
+  #+END_SRC
+  
+  file:imgs/pin11.png
+
+** 
+
+  #+BEGIN_SRC rust
+    let sql: String = format!("SELECT FROM users WHERE usersname = {}", user);
+    let db_resp = self.query(&sql).await;
+  #+END_SRC
+  
+  file:imgs/pin12.png
+  
+** Want to learn more?
+
+   file:imgs/rustlatam2019.png
+   
+   https://www.youtube.com/watch?v=skos4B5x7qE
+
+* A more useful future
+
+  + Set internal boolean to ~true~ on first poll
+  + Return ~Poll::Ready(())~ on second poll
+  
+  #+INCLUDE: "exercises/future-anatomy/src/twice.rs" src rust
+
+* Not so useful...
+
+  + The future only gets polled once!
+  
+  #+BEGIN_SRC console
+    ❤ (tempest) ~/P/t/t/d/e/future-anatomy> cargo run --bin 02_twice
+     Compiling future-anatomy v0.1.0 (/home/Projects/talks/teaching-rust/dd-async/exercises/future-anatomy)
+      Finished dev [unoptimized + debuginfo] target(s) in 0.69s
+       Running `target/debug/02_twice`
+     [src/twice.rs:17] Poll::Pending = Pending
+  #+END_SRC
+
+* 
+
+  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle2.png :cmdline -Kdot -Tpng
+        digraph {
+            node [shape=box, fontsize=24, margin="0.25,0.25"]
+            rankdir = "LR";
+        
+            new [color=darkgreen, shape=box]
+            poll [color=teal, shape=box]
+            yield [color=orange, shape=box]
+            wake [color=teal, shape=box]
+            huh [label="?", color=darkgreen, penwidth=5]
+            resolve [color=green, shape=box]
+            new -> poll -> yield;
+            wake -> poll;
+            huh -> wake [style="dashed"];
+            poll -> resolve;
+        }
+  #+END_SRC
+
+
+* We need to wake our future again
+  
+  #+INCLUDE: "exercises/future-anatomy/src/good_twice.rs" src rust
+
+* 
+
+  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle3.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR";
+    
+        new [color=darkgreen, shape=box]
+        poll [color=teal, shape=box]
+        yield [color=orange, shape=box]
+        wake [color=teal, shape=box]
+        resolve [color=green, shape=box]
+        new -> poll -> yield
+        poll -> resolve
+        wake -> poll [dir="both", style="dashed", label="wake_by_ref()"]
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:imgs/gen/future-lifecycle3.png]]
+
+* 
+
+  #+BEGIN_SRC console
+     ❤ (tempest) ~/P/t/t/d/e/future-anatomy> cargo run --bin 03_twice
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/03_twice`
+    Future says: ()
+  #+END_SRC
+
+* In summary...
+
+* Desugaring
+
+  Async/ Await are relatively modern and hide what Futures look like under the hood
+
+  #+BEGIN_SRC rust
+    use async_std::{fs::File, io::Read};
+    
+    async fn read_file(path: &str) -> std::io::Result<String> {
+    
+        let mut f = File::open(path).await?;
+        let mut buf = String::new();
+        f.read_to_string(&mut buf).await?;
+        Ok(buf)
+    
+    }
+  #+END_SRC
+
+* Desugaring
+
+  Async/ Await are relatively modern and hide what Futures look like under the hood
+
+  #+BEGIN_SRC rust
+    use async_std::{fs::File, io::Read};
+    
+    fn read_file(path: &str) -> impl Future<Output=std::io::Result<String>> {
+        async {
+            let mut f = File::open(path).await?;
+            let mut buf = String::new();
+            f.read_to_string(&mut buf).await?;
+            Ok(buf)
+        }
+    }
+  #+END_SRC
+
+* ~Await~ the end of all things
+
+  + Tell the executor to keep schedule a future
+    + Just once though
+    + Afterwards it needs to be woken up
+    + ~.await~ gets desugared by the compiler
+
+* [[file:README.org][Back to index]]

@@ -15,11 +15,9 @@
   (org-html-export-to-html)
   
   ;; Then export the rest of the slides
-  (defvar slides (delete "README.org" (directory-files "." nil "\.org$" t)))
   (mapcar
    (lambda (file)
      (find-file file)
      (org-reveal-export-to-html))
-   slides))
+   (delete "README.org" (directory-files "." nil "\.org$" t))))
 (provide 'export-course)
-

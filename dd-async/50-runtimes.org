@@ -1,0 +1,131 @@
+#+Title: Runtimes
+#+SETUPFILE: ../reveal.setup
+
+* Rust doesn't provide a default runtime
+
+* 
+
+  + tokio :: A popular async ecosystem with HTTP, gRPC, and tracing
+    frameworks.
+  + async-std/ smol :: A project that provides asynchronous
+    counterparts to standard library components.
+  + embassy :: Rust Embedded async executor and HALs
+  + fuchsia-async :: Google's Fuchsia OS executor
+
+* The smallest runtime: ~async-task~ & ~futuress-lite~
+
+  #+INCLUDE: "exercises/runtimes/src/bin/async-task.rs" src rust
+
+* ~block_on~
+
+** Basic setup
+
+   #+BEGIN_SRC rust
+     use parking::Parker;
+     use waker_fn::waker_fn;
+     
+     pub fn block_on<T>(future: impl Future<Output = T>) -> T {
+         crate::pin!(future);
+     
+         thread_local! {
+             // Cached parker and waker for efficiency.
+             static CACHE: RefCell<(Parker, Waker)> = RefCell::new(parker_and_waker());
+         }
+     
+         // ...
+     }
+   #+END_SRC
+
+** No ~block_on~ nesting...
+
+   #+BEGIN_SRC rust
+     match cache.try_borrow_mut() {
+         // Use the cached parker and waker.
+         Ok(cache) => {
+             let (parker, waker) = &*cache;
+             let cx = &mut Context::from_waker(&waker);
+     
+             loop {
+                 match future.as_mut().poll(cx) {
+                     Poll::Ready(output) => return output,
+                     Poll::Pending => parker.park(),
+                 }
+             }
+         }
+         _ => todo!()
+     }
+   #+END_SRC
+
+** Yes ~block_on~ nesting
+
+   #+BEGIN_SRC rust
+     match cache.try_borrow_mut() {
+         // Looks like this is a recursive `block_on()` call.
+         Err(_) => {
+             let (parker, waker) = parker_and_waker();
+             let cx = &mut Context::from_waker(&waker);
+     
+             loop {
+                 match future.as_mut().poll(cx) {
+                     Poll::Ready(output) => return output,
+                     Poll::Pending => parker.park(),
+                 }
+             }
+         }
+         _ => todo!()
+     }
+   #+END_SRC
+
+   
+
+** Oh and a smol other thing
+
+  + ~Parker~ comes from the ~parking~ crate
+  + ~Waker~ is part of ~core::task~
+    + ~waker_fn~ is a convenience builder crate for ~Waker~
+   
+ #+BEGIN_SRC rust
+   fn parker_and_waker() -> (Parker, Waker) {
+       let parker = Parker::new();
+       let unparker = parker.unparker();
+       let waker = waker_fn(move || {
+           unparker.unpark();
+       });
+       (parker, waker)
+   }
+ #+END_SRC
+
+** We just made a runtime!
+
+   Isn't this cool??
+   
+   #+BEGIN_SRC rust
+     fn main() {
+         // allow us to attach futures to our state machine after it
+         // started running
+         let t = spawn(async {
+             println!("Hello task!");
+         });
+     
+         // blocks the current thread until all futures are done
+         block_on(t);
+     }
+     
+   #+END_SRC
+
+* Anyway
+
+* ~async-std~
+
+  We can easily create tasks without the syntactic sugar
+  
+  #+INCLUDE: "exercises/runtimes/src/bin/async-std.rs" src rust
+
+* ~tokio~
+
+  We can easily create tasks without the syntactic sugar
+  
+  #+INCLUDE: "exercises/runtimes/src/bin/tokio.rs" src rust
+
+* [[file:README.org][Back to index]]
+

@@ -2,8 +2,6 @@
 #+Author: Katharina Fey
 #+SETUPFILE: html.setup
 
-* Rust workshop material
-
   Welcome to the Rust teaching material repository.  This material was
   created by [[https://spacekookie.de][Katharina Fey]] with the purpose of having a set of slides,
   code examples, example projects, and advanced visualisations to
@@ -20,13 +18,13 @@
    programming langueg.  Following is an overview of available
    courses.
 
-   - [[./cc-tree-days][cc-three-days]] :: A comprehensive introductory course that will get
-     developers, who are completely unfamiliar with Rust into the
+   - [[./cc-tree-days][rust-three-days]] :: A comprehensive introductory course that will
+     get developers, who are completely unfamiliar with Rust into the
      position to write complex systems applications and libraries
-   - [[./dd-ownership][dd-ownership]]  :: A deep-dive course into the Rust ownership
-     model
-   - [[./dd-async/README.org][dd-async]]     :: A deep-dive course into async development, async
-     compiler internals, and runtime development in Rust
+   - [[./dd-ownership][deep-dive-ownership]]  :: An intensive deep-dive course into the
+     Rust ownership model and it's impact on concurrent programming
+   - [[./dd-async/README.org][deep-dive-async]]     :: A deep-dive course into async development,
+     async compiler internals, and runtime development in Rust
 
 * Build these slides
 

@@ -2,29 +2,66 @@
 #+Subtitle: We just don't know yet
 #+SETUPFILE: ../reveal.setup
 
+* 
+
+  I made a video essay about all this a while ago
+
+  #+attr_html: :width 400px
+  file:imgs/async-essay.png
+
+  https://diode.zone/w/koSvUCmBL11VA2PTVZuRG9
+
+* 
+
+  A synchronous webserver which handles two incoming connections
+  
+  file:imgs/concurrency0.png
+
+* 
+
+  A lot of that time might be spent waiting
+
+  file:imgs/concurrency2.png
+  
+* 
+
+  So instead, break out "work units" and handle them at the same time
+  
+  file:imgs/concurrency1.png
+
+* Concurrency vs Parallelism
+
+  file:imgs/parallelism1.png
+
 * Async theory
 
-  + Asynchronous programming aims to use system resources more efficiently
-  + Execute code while waiting for external input
+  + Use system resources more effectively
+  + Execute code while waiting for outside events
   + Developed under many different names
-    + coroutines
-    + co-operative multitasking
-    + non-blocking I/O
+    + Coroutines
+    + Cooperative multitasking
+    + Non-blocking I/O
+  
+* Async state machines
 
-  #+BEGIN_NOTES
-  A quick recap over what async development is.  You should all know
-  this because this is an advanced course.
+  + Think of your program like a state machine
+  + Sometimes states take a while to change
+    + React to changes when they happen
+    + Yield to runtime when there's nothing to do
 
-  We are not going to talk much about _why_ you would want to do async
-  development, and instead focus on the how and internals of how this
-  is implemented in Rust.
-  #+END_NOTES
+* Futures
 
-* "Non-blocking I/O"
+  + Represents a computation that _may_ return a result in the future
+  + Needs to be polled (in some way or another) to make progress
+  + A future might not run at all either
+  + Yields when no progress can be made
 
-  Executing code while waiting for I/O
+* Executors
 
+  + Acts as a scheduler for async code
+  + Employes cooperative multitasking between futures
+  + "Wake up" future when new work can be done
 
-* Other slide
+* How do we know when to wake?
 
-  bites the dust
+* [[file:README.org][Back to index]]

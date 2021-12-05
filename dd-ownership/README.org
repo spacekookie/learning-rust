@@ -26,7 +26,7 @@
 
   \\
 
-  + Exercise overview
+  + [[https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-ownership/exercises][Exercise overview]]
   
 * About these slides
 

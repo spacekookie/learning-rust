@@ -9,7 +9,7 @@
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    sodipodi:docname="cpu.svg"
-   inkscape:export-filename="/home/Projects/talks/teaching-rust/dd-ownership/imgs/numref3.png"
+   inkscape:export-filename="/home/Projects/talks/teaching-rust/dd-async/imgs/pin12.png"
    inkscape:export-xdpi="199.92"
    inkscape:export-ydpi="199.92"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -26,16 +26,16 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="1.8626181"
-     inkscape:cx="275.41878"
-     inkscape:cy="304.41023"
-     inkscape:window-width="1244"
-     inkscape:window-height="1300"
-     inkscape:window-x="20"
-     inkscape:window-y="117"
+     inkscape:zoom="2.6341398"
+     inkscape:cx="294.02388"
+     inkscape:cy="182.22268"
+     inkscape:window-width="2239"
+     inkscape:window-height="1356"
+     inkscape:window-x="230"
+     inkscape:window-y="42"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g13144"
-     showguides="true"
+     inkscape:current-layer="layer12"
+     showguides="false"
      inkscape:guide-bbox="true"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
@@ -184,7 +184,8 @@
      inkscape:label="Base"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -528,12 +529,14 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="RUST">
+     inkscape:label="RUST"
+     style="display:none"
+     sodipodi:insensitive="true">
     <g
        inkscape:groupmode="layer"
        id="g19676"
        inkscape:label="NumRef returned"
-       style="display:inline">
+       style="display:none">
       <g
          id="g19674"
          transform="translate(-89.609761)">
@@ -572,7 +575,7 @@
        inkscape:groupmode="layer"
        id="g19689"
        inkscape:label="new_numref arrow returned"
-       style="display:inline">
+       style="display:none">
       <g
          id="g19696"
          transform="translate(-0.07003361,21.760029)">
@@ -592,7 +595,7 @@
        inkscape:groupmode="layer"
        id="g13144"
        inkscape:label="return ref"
-       style="display:inline"
+       style="display:none"
        sodipodi:insensitive="true">
       <path
          style="display:inline;fill:none;stroke:#03e6ff;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
@@ -609,7 +612,7 @@
        inkscape:groupmode="layer"
        id="g9171"
        inkscape:label="NumRef"
-       style="display:inline"
+       style="display:none"
        sodipodi:insensitive="true">
       <g
          id="g13252"
@@ -649,7 +652,7 @@
        inkscape:groupmode="layer"
        id="g12754"
        inkscape:label="new_numref arrow"
-       style="display:inline"
+       style="display:none"
        sodipodi:insensitive="true">
       <path
          style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
@@ -667,7 +670,7 @@
        id="layer11"
        inkscape:label="return"
        sodipodi:insensitive="true"
-       style="display:inline">
+       style="display:none">
       <text
          xml:space="preserve"
          style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
@@ -684,7 +687,7 @@
        inkscape:groupmode="layer"
        id="layer10"
        inkscape:label="new_num"
-       style="display:inline"
+       style="display:none"
        sodipodi:insensitive="true">
       <text
          xml:space="preserve"
@@ -702,8 +705,7 @@
        inkscape:groupmode="layer"
        id="g1145"
        inkscape:label="fn main"
-       style="display:inline"
-       sodipodi:insensitive="true">
+       style="display:inline">
       <text
          xml:space="preserve"
          style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
@@ -715,6 +717,161 @@
            x="31.559862"
            y="40.147877"
            id="tspan1141">fn main()</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="Async Rust"
+     style="display:inline">
+    <g
+       inkscape:groupmode="layer"
+       id="g7217"
+       inkscape:label="Future"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="92.698631"
+         y="54.86047"
+         id="text15511"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="92.698631"
+           y="54.86047"
+           id="tspan15509">str-&gt;</tspan></text>
+      <path
+         style="fill:none;stroke:#e10000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.05833, 1.05833;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+         d="m 97.926059,54.00932 c 0,0 16.473351,0.736459 19.468821,-2.259014 2.75001,-2.750009 2.99084,-10.01195 2.99084,-10.01195"
+         id="path16938"
+         sodipodi:nodetypes="csc" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer12"
+       inkscape:label="Pin"
+       style="display:inline">
+      <path
+         style="display:inline;fill:none;stroke:#e10000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.05833, 1.05833;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+         d="m 47.640653,53.743949 c 0,0 31.523907,-0.305769 31.523907,-6.96167 0,-7.420823 22.82542,-7.472968 22.82542,-7.472968"
+         id="path17563"
+         sodipodi:nodetypes="csc" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="120.82607"
+         y="40.308392"
+         id="text7207"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="120.82607"
+           y="40.308392"
+           id="tspan7205">SELECT</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="134.93607"
+         y="40.308392"
+         id="text7211"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="134.93607"
+           y="40.308392"
+           id="tspan7209">FROM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;stroke-width:0.264583"
+         x="106.76763"
+         y="40.322502"
+         id="text7215"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="106.76763"
+           y="40.322502"
+           id="tspan7213">db-&gt;</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="92.695099"
+         y="46.549034"
+         id="text14001"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="92.695099"
+           y="46.549034"
+           id="tspan13999">.....</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="106.76762"
+         y="46.549034"
+         id="text15507"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="106.76762"
+           y="46.549034"
+           id="tspan15505">.....</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="120.84016"
+         y="46.549034"
+         id="text16899"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="120.84016"
+           y="46.549034"
+           id="tspan16897">.....</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="134.87961"
+         y="46.549034"
+         id="text16903"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="134.87961"
+           y="46.549034"
+           id="tspan16901">.....</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="35.087627"
+         y="54.777565"
+         id="text6467"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="35.087627"
+           y="54.777565"
+           id="tspan6465">DbFuture(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g1081"
+       inkscape:label="fn main"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="31.559862"
+         y="40.147877"
+         id="text1079"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="31.559862"
+           y="40.147877"
+           id="tspan1077">fn main()</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="34.212742"
+         y="47.23695"
+         id="text1089"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="34.212742"
+           y="47.23695"
+           id="tspan1087">sql = String</tspan></text>
     </g>
   </g>
   <g
