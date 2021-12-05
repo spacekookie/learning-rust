@@ -9,9 +9,9 @@
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    sodipodi:docname="cpu.svg"
-   inkscape:export-filename="/home/Projects/talks/teaching-rust/dd-ownership/imgs/gc6.png"
-   inkscape:export-xdpi="200.064"
-   inkscape:export-ydpi="200.064"
+   inkscape:export-filename="/home/Projects/talks/teaching-rust/dd-ownership/imgs/numref3.png"
+   inkscape:export-xdpi="199.92"
+   inkscape:export-ydpi="199.92"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,22 +26,23 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="1.3170699"
-     inkscape:cx="302.9452"
-     inkscape:cy="202.3431"
-     inkscape:window-width="1786"
-     inkscape:window-height="1369"
-     inkscape:window-x="748"
-     inkscape:window-y="45"
+     inkscape:zoom="1.8626181"
+     inkscape:cx="275.41878"
+     inkscape:cy="304.41023"
+     inkscape:window-width="1244"
+     inkscape:window-height="1300"
+     inkscape:window-x="20"
+     inkscape:window-y="117"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g18449"
+     inkscape:current-layer="g13144"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
      inkscape:bbox-nodes="true"
      inkscape:snap-nodes="true"
-     width="650px">
+     width="650px"
+     inkscape:snap-global="true">
     <sodipodi:guide
        position="23.848165,88.635408"
        orientation="-1,0"
@@ -526,553 +527,752 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="void main(...)"
-     style="display:none"
-     sodipodi:insensitive="true">
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-       x="36.040127"
-       y="40.225487"
-       id="text16200"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-         x="36.040127"
-         y="40.225487"
-         id="tspan16198">void main(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g47066"
-     inkscape:label="Foo makeFoo(...)"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-       x="37.620564"
-       y="40.225487"
-       id="text47064"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-         x="37.620564"
-         y="40.225487"
-         id="tspan47062">Foo makeFoo(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g18449"
-     inkscape:label="malloc"
-     style="display:none"
-     sodipodi:insensitive="true">
+     id="layer2"
+     inkscape:label="RUST">
     <g
        inkscape:groupmode="layer"
-       id="layer4"
-       inkscape:label="malloc arrow"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <path
-         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 45.458797,46.143536 c 15.781667,-0.675526 26.656766,0.849511 33.183888,4.723784 7.287153,4.325401 8.40704,4.532306 22.315865,3.025488"
-         id="path35192"
-         sodipodi:nodetypes="csc" />
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="layer6"
-       inkscape:label="string normal"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="106.75351"
-         y="54.86047"
-         id="text44288"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="106.75351"
-           y="54.86047"
-           id="tspan44286">Hello</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="120.82605"
-         y="54.86047"
-         id="text44292"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="120.82605"
-           y="54.86047"
-           id="tspan44290">World</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="134.93605"
-         y="54.86047"
-         id="text44296"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="134.93605"
-           y="54.86047"
-           id="tspan44294">\0</tspan></text>
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="g44317"
-       inkscape:label="string gone"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="106.75351"
-         y="54.86047"
-         id="text44307"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="106.75351"
-           y="54.86047"
-           id="tspan44305">Hello</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="120.82605"
-         y="54.86047"
-         id="text44311"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="120.82605"
-           y="54.86047"
-           id="tspan44309">World</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="134.93605"
-         y="54.86047"
-         id="text44315"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="134.93605"
-           y="54.86047"
-           id="tspan44313">\0</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.678831"
-       y="47.501534"
-       id="text18447"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.678831"
-         y="47.501534"
-         id="tspan18445">malloc(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g51518"
-     inkscape:label="new String"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <g
-       inkscape:groupmode="layer"
-       id="g51484"
-       inkscape:label="new sttring arrow"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <path
-         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 61.233327,45.984104 c 6.841601,-0.07384 12.290968,0.476352 14.55941,4.405408 2.65996,4.607187 6.476515,4.892229 13.91388,3.896333"
-         id="path51482"
-         sodipodi:nodetypes="csc" />
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="g51498"
-       inkscape:label="string 1 normal"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="106.75351"
-         y="54.86047"
-         id="text51488"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="106.75351"
-           y="54.86047"
-           id="tspan51486">Hello</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="120.82605"
-         y="54.86047"
-         id="text51492"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="120.82605"
-           y="54.86047"
-           id="tspan51490">World</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="134.93605"
-         y="54.86047"
-         id="text51496"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="134.93605"
-           y="54.86047"
-           id="tspan51494">\0</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
-         x="92.680992"
-         y="54.86047"
-         id="text53457"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
-           x="92.680992"
-           y="54.86047"
-           id="tspan53455">1</tspan></text>
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="g55561"
-       inkscape:label="string 2 normal"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="106.75351"
-         y="54.86047"
-         id="text55547"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="106.75351"
-           y="54.86047"
-           id="tspan55545">Hello</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="120.82605"
-         y="54.86047"
-         id="text55551"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="120.82605"
-           y="54.86047"
-           id="tspan55549">World</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="134.93605"
-         y="54.86047"
-         id="text55555"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="134.93605"
-           y="54.86047"
-           id="tspan55553">\0</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
-         x="92.680992"
-         y="54.86047"
-         id="text55559"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
-           x="92.680992"
-           y="54.86047"
-           id="tspan55557">2</tspan></text>
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="g57367"
-       inkscape:label="string 0 gone"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="106.75351"
-         y="54.86047"
-         id="text57353"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="106.75351"
-           y="54.86047"
-           id="tspan57351">Hello</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="120.82605"
-         y="54.86047"
-         id="text57357"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="120.82605"
-           y="54.86047"
-           id="tspan57355">World</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="134.93605"
-         y="54.86047"
-         id="text57361"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="134.93605"
-           y="54.86047"
-           id="tspan57359">\0</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
-         x="92.680992"
-         y="54.86047"
-         id="text57365"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
-           x="92.680992"
-           y="54.86047"
-           id="tspan57363">0</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.678831"
-       y="47.501534"
-       id="text51516"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.678831"
-         y="47.501534"
-         id="tspan51514">str = new String(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g60475"
-     inkscape:label="new Foo"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <g
-       inkscape:groupmode="layer"
-       id="g60415"
-       inkscape:label="new foo arrow"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <path
-         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 56.360398,53.418492 c 22.565333,0 20.937681,-3.076437 23.734193,-7.920139 2.739484,-4.744925 5.724222,-6.4839 20.642709,-6.4839"
-         id="path60413"
-         sodipodi:nodetypes="csc" />
-    </g>
-    <g
-       inkscape:groupmode="layer"
-       id="g60433"
-       inkscape:label="Foo normal"
-       style="display:none"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="120.82607"
-         y="40.308392"
-         id="text60419"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="120.82607"
-           y="40.308392"
-           id="tspan60417">str-&gt;</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
-         x="134.93607"
-         y="40.308392"
-         id="text60423"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
-           x="134.93607"
-           y="40.308392"
-           id="tspan60421">42</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
-         x="106.76763"
-         y="40.322502"
-         id="text60431"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+       id="g19676"
+       inkscape:label="NumRef returned"
+       style="display:inline">
+      <g
+         id="g19674"
+         transform="translate(-89.609761)">
+        <rect
+           style="display:inline;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1.44086;stroke-linecap:round;stroke-linejoin:bevel"
+           id="rect19664"
+           width="26.95439"
+           height="6.1000919"
+           x="114.35995"
+           y="72.356201" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.70322"
+           y="76.702705"
+           id="text19668"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.70322"
+             y="76.702705"
+             id="tspan19666">i64-&gt;</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:0;display:inline;fill:#ffffff;stroke-width:0.264583"
            x="106.76763"
            y="40.322502"
-           id="tspan60429">1</tspan></text>
+           id="text19672"
+           transform="translate(13.896139,36.380203)"><tspan
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="106.76763"
+             y="40.322502"
+             id="tspan19670">i64-&gt;</tspan></text>
+      </g>
     </g>
     <g
        inkscape:groupmode="layer"
-       id="g74779"
-       inkscape:label="Foo gone"
-       style="display:none">
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="120.82607"
-         y="40.308392"
-         id="text74769"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="120.82607"
-           y="40.308392"
-           id="tspan74767">str-&gt;</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
-         x="134.93607"
-         y="40.308392"
-         id="text74773"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
-           x="134.93607"
-           y="40.308392"
-           id="tspan74771">42</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
-         x="106.76763"
-         y="40.322502"
-         id="text74777"><tspan
-           sodipodi:role="line"
-           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
-           x="106.76763"
-           y="40.322502"
-           id="tspan74775">0</tspan></text>
+       id="g19689"
+       inkscape:label="new_numref arrow returned"
+       style="display:inline">
+      <g
+         id="g19696"
+         transform="translate(-0.07003361,21.760029)">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 29.499471,55.919702 c 0,3.783346 1.606727,3.151684 10.118648,3.151684 4.879056,0 4.105176,-7.277921 4.105176,-10.517531"
+           id="path19685"
+           sodipodi:nodetypes="csc" />
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 44.845314,55.919702 c 0,3.783346 1.490706,3.308674 3.175393,3.308674 1.939722,0 1.14986,-7.295243 1.14986,-10.534853"
+           id="path19687"
+           sodipodi:nodetypes="csc" />
+      </g>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.622387"
-       y="54.685844"
-       id="text60473"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.622387"
-         y="54.685844"
-         id="tspan60471">foo = new Foo(str)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer7"
-     inkscape:label="return Foo"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.622387"
-       y="62.053612"
-       id="text71355"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.622387"
-         y="62.053612"
-         id="tspan71353">return foo</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g36508"
-     inkscape:label="printf"
-     style="display:none"
-     sodipodi:insensitive="true">
     <g
        inkscape:groupmode="layer"
-       id="layer5"
-       inkscape:label="printf arrow"
-       sodipodi:insensitive="true"
-       style="display:none">
-      <path
-         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 45.396304,53.98785 c 16.078354,0.108362 23.995318,0.822998 31.585661,0.822998 8.65851,0 10.06776,0.588778 23.976585,-0.91804"
-         id="path36506"
-         sodipodi:nodetypes="csc" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.678831"
-       y="55.003963"
-       id="text36492"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.678831"
-         y="55.003963"
-         id="tspan36490">printf(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g38832"
-     inkscape:label="free"
-     style="display:none"
-     sodipodi:insensitive="true">
-    <g
-       inkscape:groupmode="layer"
-       id="g38814"
-       inkscape:label="free arrow"
-       style="display:none"
+       id="g13144"
+       inkscape:label="return ref"
+       style="display:inline"
        sodipodi:insensitive="true">
       <path
-         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 45.396304,53.98785 c 16.078354,0.108362 23.995318,0.822998 31.585661,0.822998 8.65851,0 10.06776,0.588778 23.976585,-0.91804"
-         id="path38812"
+         style="display:inline;fill:none;stroke:#03e6ff;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+         d="m 51.903303,52.973094 c 22.565333,0 26.576915,3.372865 26.576915,12.995757 0,8.899828 -14.955698,10.260586 -23.815037,10.260586"
+         id="path13142"
          sodipodi:nodetypes="csc" />
+      <path
+         style="display:inline;fill:none;fill-opacity:1;stroke:#ff0303;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker82376)"
+         d="m 53.295881,64.923814 -2.05963,4.993123 3.04382,0.165367 -2.36818,5.039252"
+         id="path19006"
+         sodipodi:nodetypes="cccc" />
     </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.678831"
-       y="55.003963"
-       id="text38818"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
-         x="23.678831"
-         y="55.003963"
-         id="tspan38816">free(...)</tspan></text>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g45733"
-     inkscape:label="bad printf"
-     style="display:none"
-     sodipodi:insensitive="true">
     <g
        inkscape:groupmode="layer"
-       id="g45715"
-       inkscape:label="printf arrow"
+       id="g9171"
+       inkscape:label="NumRef"
+       style="display:inline"
+       sodipodi:insensitive="true">
+      <g
+         id="g13252"
+         transform="translate(-90.511782,-21.828127)">
+        <rect
+           style="display:inline;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1.44086;stroke-linecap:round;stroke-linejoin:bevel"
+           id="rect13146"
+           width="26.95439"
+           height="6.1000919"
+           x="114.35995"
+           y="72.356201" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.70322"
+           y="76.702705"
+           id="text9161"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.70322"
+             y="76.702705"
+             id="tspan9159">i64-&gt;</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:0;display:inline;fill:#ffffff;stroke-width:0.264583"
+           x="106.76763"
+           y="40.322502"
+           id="text9169"
+           transform="translate(13.896139,36.380203)"><tspan
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="106.76763"
+             y="40.322502"
+             id="tspan9167">i64-&gt;</tspan></text>
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g12754"
+       inkscape:label="new_numref arrow"
        style="display:inline"
        sodipodi:insensitive="true">
       <path
          style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
-         d="m 44.4446,61.092363 c 16.078354,0.108362 24.982706,1.007841 31.556136,-2.787331 5.631052,-3.251089 11.048989,-2.905406 24.957814,-4.412224"
-         id="path45713"
+         d="m 29.499471,55.919702 c 0,3.783346 1.606727,3.151684 10.118648,3.151684 4.879056,0 4.105176,-7.277921 4.105176,-10.517531"
+         id="path12752"
          sodipodi:nodetypes="csc" />
       <path
-         style="fill:none;fill-opacity:1;stroke:#e60000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker82376)"
-         d="m 106.12039,47.986549 -2.05963,4.993123 3.04382,0.165367 -2.36818,5.039252"
-         id="path46385"
-         sodipodi:nodetypes="cccc" />
+         style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+         d="m 44.845314,55.919702 c 0,3.783346 1.490706,3.308674 3.175393,3.308674 1.939722,0 1.14986,-7.295243 1.14986,-10.534853"
+         id="path16980"
+         sodipodi:nodetypes="csc" />
     </g>
-    <text
-       xml:space="preserve"
-       style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
-       x="23.622387"
-       y="61.976002"
-       id="text45719"><tspan
-         sodipodi:role="line"
-         style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+    <g
+       inkscape:groupmode="layer"
+       id="layer11"
+       inkscape:label="return"
+       sodipodi:insensitive="true"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="34.875961"
+         y="69.065079"
+         id="text15219"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="34.875961"
+           y="69.065079"
+           id="tspan15217">return NumRef</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer10"
+       inkscape:label="new_num"
+       style="display:inline"
+       sodipodi:insensitive="true">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="37.733452"
+         y="47.423923"
+         id="text5477"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="37.733452"
+           y="47.423923"
+           id="tspan5475">new_numref(5, 9)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g1145"
+       inkscape:label="fn main"
+       style="display:inline"
+       sodipodi:insensitive="true">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="31.559862"
+         y="40.147877"
+         id="text1143"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="31.559862"
+           y="40.147877"
+           id="tspan1141">fn main()</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="OTHER"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <g
+       inkscape:groupmode="layer"
+       id="g45733"
+       inkscape:label="bad printf"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="g45715"
+         inkscape:label="printf arrow"
+         style="display:inline"
+         sodipodi:insensitive="true">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 44.4446,61.092363 c 16.078354,0.108362 24.982706,1.007841 31.556136,-2.787331 5.631052,-3.251089 11.048989,-2.905406 24.957814,-4.412224"
+           id="path45713"
+           sodipodi:nodetypes="csc" />
+        <path
+           style="fill:none;fill-opacity:1;stroke:#e60000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker82376)"
+           d="m 106.12039,47.986549 -2.05963,4.993123 3.04382,0.165367 -2.36818,5.039252"
+           id="path46385"
+           sodipodi:nodetypes="cccc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
          x="23.622387"
          y="61.976002"
-         id="tspan45717">printf(...)</tspan></text>
+         id="text45719"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.622387"
+           y="61.976002"
+           id="tspan45717">printf(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g38832"
+       inkscape:label="free"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="g38814"
+         inkscape:label="free arrow"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 45.396304,53.98785 c 16.078354,0.108362 23.995318,0.822998 31.585661,0.822998 8.65851,0 10.06776,0.588778 23.976585,-0.91804"
+           id="path38812"
+           sodipodi:nodetypes="csc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.678831"
+         y="55.003963"
+         id="text38818"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.678831"
+           y="55.003963"
+           id="tspan38816">free(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g36508"
+       inkscape:label="printf"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="layer5"
+         inkscape:label="printf arrow"
+         sodipodi:insensitive="true"
+         style="display:none">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 45.396304,53.98785 c 16.078354,0.108362 23.995318,0.822998 31.585661,0.822998 8.65851,0 10.06776,0.588778 23.976585,-0.91804"
+           id="path36506"
+           sodipodi:nodetypes="csc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.678831"
+         y="55.003963"
+         id="text36492"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.678831"
+           y="55.003963"
+           id="tspan36490">printf(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer7"
+       inkscape:label="return Foo"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.622387"
+         y="62.053612"
+         id="text71355"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.622387"
+           y="62.053612"
+           id="tspan71353">return foo</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g60475"
+       inkscape:label="new Foo"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="g60415"
+         inkscape:label="new foo arrow"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 56.360398,53.418492 c 22.565333,0 20.937681,-3.076437 23.734193,-7.920139 2.739484,-4.744925 5.724222,-6.4839 20.642709,-6.4839"
+           id="path60413"
+           sodipodi:nodetypes="csc" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g60433"
+         inkscape:label="Foo normal"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="120.82607"
+           y="40.308392"
+           id="text60419"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="120.82607"
+             y="40.308392"
+             id="tspan60417">str-&gt;</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.93607"
+           y="40.308392"
+           id="text60423"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.93607"
+             y="40.308392"
+             id="tspan60421">42</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
+           x="106.76763"
+           y="40.322502"
+           id="text60431"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+             x="106.76763"
+             y="40.322502"
+             id="tspan60429">1</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g74779"
+         inkscape:label="Foo gone"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="120.82607"
+           y="40.308392"
+           id="text74769"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="120.82607"
+             y="40.308392"
+             id="tspan74767">str-&gt;</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="134.93607"
+           y="40.308392"
+           id="text74773"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="134.93607"
+             y="40.308392"
+             id="tspan74771">42</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
+           x="106.76763"
+           y="40.322502"
+           id="text74777"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+             x="106.76763"
+             y="40.322502"
+             id="tspan74775">0</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.622387"
+         y="54.685844"
+         id="text60473"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.622387"
+           y="54.685844"
+           id="tspan60471">foo = new Foo(str)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g51518"
+       inkscape:label="new String"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="g51484"
+         inkscape:label="new sttring arrow"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 61.233327,45.984104 c 6.841601,-0.07384 12.290968,0.476352 14.55941,4.405408 2.65996,4.607187 6.476515,4.892229 13.91388,3.896333"
+           id="path51482"
+           sodipodi:nodetypes="csc" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g51498"
+         inkscape:label="string 1 normal"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="106.75351"
+           y="54.86047"
+           id="text51488"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="106.75351"
+             y="54.86047"
+             id="tspan51486">Hello</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="120.82605"
+           y="54.86047"
+           id="text51492"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="120.82605"
+             y="54.86047"
+             id="tspan51490">World</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.93605"
+           y="54.86047"
+           id="text51496"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.93605"
+             y="54.86047"
+             id="tspan51494">\0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
+           x="92.680992"
+           y="54.86047"
+           id="text53457"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+             x="92.680992"
+             y="54.86047"
+             id="tspan53455">1</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g55561"
+         inkscape:label="string 2 normal"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="106.75351"
+           y="54.86047"
+           id="text55547"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="106.75351"
+             y="54.86047"
+             id="tspan55545">Hello</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="120.82605"
+           y="54.86047"
+           id="text55551"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="120.82605"
+             y="54.86047"
+             id="tspan55549">World</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.93605"
+           y="54.86047"
+           id="text55555"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.93605"
+             y="54.86047"
+             id="tspan55553">\0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
+           x="92.680992"
+           y="54.86047"
+           id="text55559"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+             x="92.680992"
+             y="54.86047"
+             id="tspan55557">2</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g57367"
+         inkscape:label="string 0 gone"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="106.75351"
+           y="54.86047"
+           id="text57353"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="106.75351"
+             y="54.86047"
+             id="tspan57351">Hello</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="120.82605"
+           y="54.86047"
+           id="text57357"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="120.82605"
+             y="54.86047"
+             id="tspan57355">World</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="134.93605"
+           y="54.86047"
+           id="text57361"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="134.93605"
+             y="54.86047"
+             id="tspan57359">\0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;stroke-width:0.264583"
+           x="92.680992"
+           y="54.86047"
+           id="text57365"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ff0000;stroke-width:0.264583"
+             x="92.680992"
+             y="54.86047"
+             id="tspan57363">0</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.678831"
+         y="47.501534"
+         id="text51516"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.678831"
+           y="47.501534"
+           id="tspan51514">str = new String(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g18449"
+       inkscape:label="malloc"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <g
+         inkscape:groupmode="layer"
+         id="layer4"
+         inkscape:label="malloc arrow"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <path
+           style="display:inline;fill:none;stroke:#f80000;stroke-width:0.396875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5875, 0.79375;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker88717)"
+           d="m 45.458797,46.143536 c 15.781667,-0.675526 26.656766,0.849511 33.183888,4.723784 7.287153,4.325401 8.40704,4.532306 22.315865,3.025488"
+           id="path35192"
+           sodipodi:nodetypes="csc" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer6"
+         inkscape:label="string normal"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="106.75351"
+           y="54.86047"
+           id="text44288"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="106.75351"
+             y="54.86047"
+             id="tspan44286">Hello</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="120.82605"
+           y="54.86047"
+           id="text44292"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="120.82605"
+             y="54.86047"
+             id="tspan44290">World</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+           x="134.93605"
+           y="54.86047"
+           id="text44296"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="134.93605"
+             y="54.86047"
+             id="tspan44294">\0</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="g44317"
+         inkscape:label="string gone"
+         style="display:none"
+         sodipodi:insensitive="true">
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="106.75351"
+           y="54.86047"
+           id="text44307"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="106.75351"
+             y="54.86047"
+             id="tspan44305">Hello</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="120.82605"
+           y="54.86047"
+           id="text44311"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="120.82605"
+             y="54.86047"
+             id="tspan44309">World</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;stroke-width:0.264583"
+           x="134.93605"
+           y="54.86047"
+           id="text44315"><tspan
+             sodipodi:role="line"
+             style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#666666;stroke-width:0.264583"
+             x="134.93605"
+             y="54.86047"
+             id="tspan44313">\0</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="23.678831"
+         y="47.501534"
+         id="text18447"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583"
+           x="23.678831"
+           y="47.501534"
+           id="tspan18445">malloc(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer3"
+       inkscape:label="void main(...)"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="36.040127"
+         y="40.225487"
+         id="text16200"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="36.040127"
+           y="40.225487"
+           id="tspan16198">void main(...)</tspan></text>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="g47066"
+       inkscape:label="Foo makeFoo(...)"
+       style="display:none"
+       sodipodi:insensitive="true">
+      <text
+         xml:space="preserve"
+         style="font-size:3.52778px;line-height:1.25;font-family:'Iosevka Kookie';-inkscape-font-specification:'Iosevka Kookie';letter-spacing:0px;word-spacing:0px;display:inline;stroke-width:0.264583"
+         x="37.620564"
+         y="40.225487"
+         id="text47064"><tspan
+           sodipodi:role="line"
+           style="font-size:3.52778px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="37.620564"
+           y="40.225487"
+           id="tspan47062">Foo makeFoo(...)</tspan></text>
+    </g>
   </g>
 </svg>

@@ -1,0 +1,173 @@
+#+Title: Borrowing and threads
+#+SETUPFILE: ../reveal.setup
+
+* Let's write a multi-threaded message mailbox
+
+  + We know all the tools by now
+  + Use ~Arc<T>~ to share references between threads
+  + Use ~Mutex<T>~ to gain exclusive (and thread-safe!) mutable access
+  + Probably no real need for lifetime syntax
+
+* 
+
+  This pattern is a very simple multi-producer, single-consumer
+  channel!
+  
+  #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR"
+    
+        Mailbox [color=darkgreen, shape=box]
+        Generator1 [label="Generator", color=teal, shape=box]
+        Generator2 [label="Generator", color=teal, shape=box]
+        Consumer [color=orange, shape=box]    
+        Generator1 -> Mailbox;
+        Generator2 -> Mailbox;
+        Mailbox -> Consumer -> Mailbox;
+    }
+  #+END_SRC
+
+* 
+
+  Code at https://teach.spacekookie.de/rust/ownership/examples/mailbox!
+  
+  #+BEGIN_SRC rust
+    use std::collections::VecDeque;
+    use std::sync::{Arc, Mutex};
+    
+    #[derive(Clone)]
+    struct Mailbox {
+        inner: Arc<Mutex<VecDeque<String>>>,
+    }
+    
+    impl Mailbox {
+        /// Create a new mailbox object
+        pub fn new() -> Self {
+            todo!()
+        }
+    
+        /// Queue a new message to the back
+        pub fn queue(&self, s: String) {
+            todo!()
+        }
+    
+        /// Pop the first message off the front
+        pub fn pop(&self) -> Option<String> {
+            todo!()
+        }
+    }
+  #+END_SRC
+
+* Using the mailbox
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let mb = Mailbox::new();
+    
+        { // Use this thread to generate message (2x)
+            let mb = mb.clone();
+            thread::spawn(|| { todo!() });
+        }
+    
+        while let Some(msg) = mb.pop() {
+            println!("Message received: {}", msg);
+        }
+    
+        println!("No more messages...");
+    }
+  #+END_SRC
+
+* Using the mailbox
+
+  #+BEGIN_SRC rust
+    pub struct Generator {
+        mb: crate::Mailbox,
+    }
+    
+    impl Generator {
+        pub fn start(mb: Mailbox) {
+            Self { mb }.spawn();
+        }
+    
+        fn spawn(self) {
+            thread::spawn(move || {
+                todo!()
+            });
+        }
+    }
+  #+END_SRC
+
+* Off you go :)
+
+* There's a race condition in that code
+
+  Can you see where?
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let mb = Mailbox::new();
+    
+        // Start 2 generator threads
+        Generator::start(mb.clone());
+        Generator::start(mb.clone());
+    
+        while let Some(msg) = mb.pop() {
+            println!("Message received: {}", msg);
+        }
+    }
+  #+END_SRC
+
+** How to fix it
+
+  + Terrible way: ~std::time::sleep(...)~ 🙈
+  + Less terrible way: don't stop the loop when no messages exist
+    + Creates a busy loop!
+    + Program can never exit
+  + Best way: keep track of active generators
+    + Only shut down the consumer when all generators are gone
+    + We can do this via Channels, or a simple ~AtomicBool~
+    
+** Generator shutdown signal
+
+  Use an ~AtomicBool~ inside an ~Arc<T>~ to signal run state to the
+  consumer.
+  
+  #+BEGIN_SRC rust
+    use crate::Mailbox;
+    use std::sync::{Arc, atomic::AtomicBool};
+    
+    pub struct Generator {
+        mb: Mailbox,
+        run: Arc<AtomicBool>,
+    }
+    
+    impl Generator {
+        pub fn start(mb: Mailbox) -> Arc<AtomicBool> { todo!() }
+    }
+  #+END_SRC
+
+  
+** Generator shutdown signal
+
+  #+BEGIN_SRC rust
+    let g1 = Generator::start(mb.clone());
+    let g2 = Generator::start(mb.clone());
+    
+    while g1.load(Ordering::Relaxed) | g2.load(Ordering::Relaxed) {
+        match mb.pop() {
+            Some(msg) => println!("Message received: '{}'", msg),
+            None => {}, // still a busy-loop :(
+        }
+    }
+  #+END_SRC
+
+** Fixing busy loops
+
+   + Terrible way: ~std::time::sleep(...)~
+   + Less terrible way: ~std::thread::yield_now~
+   + Great way: waking mechanism (but this gets too complicated for
+     today!)
+     + Spoiler: this is how async runtimes work
+
+* [[file:README.org][Back to index]]

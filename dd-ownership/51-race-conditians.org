@@ -1,0 +1,61 @@
+#+Title: Thoughts on race conditions
+#+SETUPFILE: ../reveal.setup
+
+* Rust claims to "prevent data races"
+
+  \\
+  
+  But... what _is_ a data race?
+
+* I have a talk about this a while ago
+
+  \\
+  
+  #+attr_html: :width 400px
+  [[file:imgs/peertube.png]]
+
+  https://diode.zone/w/ni4Phe9SqtB91jDDqftVuP
+
+* Consider this slide deck the TLDR
+
+* Let's increment a number in memory
+
+* 
+
+  file:imgs/races/cpu0.png
+
+* 
+  file:imgs/races/cpu1.png
+
+* 
+  file:imgs/races/cpu2.png
+
+*   
+  file:imgs/races/cpu3.png
+
+* 
+  file:imgs/races/cpu4.png
+
+* What about multiple threads?
+
+
+* 
+  file:imgs/races/cpu0.png
+
+* 
+  file:imgs/races/race_condition1.png
+
+* 
+  file:imgs/races/race_condition2.png
+
+*   
+  file:imgs/races/race_condition3.png
+
+* 
+  file:imgs/races/race_condition4.png
+
+* 
+
+  A race condition is an _invariant of parallelism_
+
+* [[file:README.org][Back to index]]

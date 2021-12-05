@@ -1,0 +1,150 @@
+#+Title: Threads and borrowing
+#+SETUPFILE: ../reveal.setup
+
+* 
+
+So far we have only used a single thread!
+  
+* So how long _do_ borrows last?
+
+* 
+
+  #+BEGIN_SRC rust
+    use std::thread;
+    
+    fn main() {
+        let s = String::from("Hello World!");
+    
+        let t = thread::spawn(|| {
+            let s2 = &s;
+            println!("s2: {}", s2);
+        });
+    
+        println!("s: {}", s);
+        t.join().unwrap();
+    }
+  #+END_SRC
+
+* What are threads?
+
+  + Pieces of your program that run in parallel
+  + Can be "alive" for different amount of time
+  + Importantly: threads are a runtime feature!
+    + ~rustc~ has no way of knowing about how long a thread will be
+      alive for!
+
+* _Thus: borrows can not be shared between threads!_
+
+* Why?
+  
+* ~Send~ & ~Sync~
+
+  + Rust comes with two "marker" traits to _express thread-safety_
+  + Signal to the compiler that a type is thread-safe in a specific
+    way
+  + Require ~unsafe~ code to implement
+  + Form the foundation of thread-safety in Rust
+
+* ~Send~
+  
+  + Express that an object can safely be shared between thread
+    boundaries.
+  + A type implements ~Send~ if all of its children implement ~Send~.
+
+  \\
+  
+  + Rc<T> :: is a non-thread-safe reference counter, and thus does
+    not implement ~Send~
+  + Arc<T> :: is a thread-safe reference counter, and thus does
+    implement ~Send~
+
+* ~Sync~
+
+  + Express that an object can be safely referenced from multiple
+    threads
+  + A type ~T~ implements ~Sync~ if (and only if!) ~&T~ is ~Send~
+    (meaning it can be shared between threads without undefined
+    behaviour)
+
+  \\
+
+  + ~i64~ :: is ~Sync~ because ~&T~ can be sent between threads
+  + ~Cell<T>~ :: not ~Sync~ because it provides interior-mutability
+    via immutable references
+
+* Wait!
+
+  Then why couldn't we share ~&i64~ across a thread-bound earlier??
+
+* ~'static~ lifetime
+
+  #+BEGIN_SRC rust norun
+    pub fn spawn<F, T>(f: F) -> JoinHandle<T> where
+        F: FnOnce() -> T,
+        F: Send + 'static,
+        T: Send + 'static,
+    {
+        // ...
+    }
+  #+END_SRC
+  
+  + Spawning a thread requires a ~'static~ lifetime bound, in addition to ~Send~
+  + Just because something is ~Send~ it doesn't mean it can be _moved
+    into a thread function_
+
+* The ~Arc~ of types
+
+  + Provides a mechanism to fulfill the ~'static~ lifetime
+    requirements of thread-spawning
+  + Provides a thread-safe atomic reference counter
+  + ~.clone()~ increments the reference counter
+    + When reference counter reaches ~0~, the memory is cleaned up
+
+* 
+
+  #+BEGIN_SRC rust
+    use std::{sync::Arc, thread};
+    
+    fn main() {
+        let s = Arc::new(String::from("Hello World!"));
+    
+        let s2 = Arc::clone(&s);
+        thread::spawn(move || {
+            println!("s2: {}", s2);
+        });
+    
+        println!("s: {}", s);
+    }
+  #+END_SRC
+
+* How to ~Sync~?
+
+  Use wrapper types to provide thread-safe reference access.
+  
+  + ~Mutex<T>~ :: exclusive locking mechanism wrapper
+  + ~RwLock<T>~ :: granual read/write locking wrapper
+
+* 
+
+  #+BEGIN_SRC rust
+    use std::{thread, sync::{Arc, Mutex}};
+    
+    fn main() {
+        let data = Arc::new(Mutex::new(vec![]));
+    
+        for n in 0..10 {
+            let data2 = Arc::clone(&data);
+            thread::spawn(move || {
+                data2.lock().unwrap().push(n * 2);
+            }).join();
+        }
+    
+        let v = data.lock().unwrap();
+        for n in v.iter() {
+            println!("{}", n);
+        }
+    }
+  #+END_SRC
+
+* [[file:README.org][Back to index]]
+

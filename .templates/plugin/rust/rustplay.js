@@ -1,3 +1,5 @@
+// Because this file gets included on every slide we need to guard the
+// function invocation here
 setTimeout(() => {
     if (!window.added) {
         window.added = true;
@@ -5,10 +7,9 @@ setTimeout(() => {
     }
 }, 0);
 
-
-// TODO: kill jquery
+// This function adds buttons to any Rust code-block in the slide-deck
 function addButtons() {
-    const result = '<span class="result"></span>';
+    const result = '<div class="result"></div>';
     const buttons = `
         <button class="exec btn">run</button>
         <button class="open-in-playground btn">open</button>
@@ -53,8 +54,7 @@ function addButtons() {
     }
 }
 
-
-
+// Wrap code in a way that Rust playground will like it
 function extendCode(code) {
     if (!code.match(/^fn \w+/m)) { // No functions, wrap all in main
         code = "fn main() {\n" + code + "\n}"
@@ -63,38 +63,3 @@ function extendCode(code) {
     }
     return code;
 }
-
-    
-    // $('pre code.rust').each(function(i, block){
-    //     $(block).before(buttons);
-    //     $(block).after(result);
-    // });
-    // $('pre code.lang-rust').each(function(i, block){
-    //     $(block).before(buttons);
-    //     $(block).after(result);
-    // });
-
-    // $('.reset').each(function (n) {
-    //     $(this).context._code = $(this).siblings('code').text();
-    // });
-
-    // $('.exec').click(function () {
-
-    // });
-
-    // $('.reset').click(function () {
-    //     $(this).siblings('code').text($(this).context._code);
-    //     hljs.highlightBlock($(this).siblings('code')[0]);
-    // })
-
-
-    // $('.versionable').blur(function () {
-    //     console.log('versioning comming soon')
-    // });
-// }
-
-// formatOutput = function (output) {
-//     var parts = output.split(/\n/);
-//     return parts.join('<br>');
-// }
-

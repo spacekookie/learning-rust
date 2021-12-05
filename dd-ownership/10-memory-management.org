@@ -103,61 +103,53 @@
   + This is done by a special runtime called _Garbage collector_
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   We start with an empty call-stack and (mostly) empty heap
   
   file:imgs/gc0.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   Instead of _allocating memory_ we _create a string_
   
   file:imgs/gc1.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   Increment the use-count when using the string to create a new object
   
   file:imgs/gc2.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   When the function returns the stack usage is removed
   
   file:imgs/gc3.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   At some point in the future the ~Foo~ object goes out of scope
   
   file:imgs/gc4.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   Which then also triggers the string to go out of scopen
   
   file:imgs/gc5.png
 
 
-* Scenario 3: garbage collection
+* Garbage collection
 
   And memory is empty again
   
   file:imgs/gc6.png
-
-
-* Scenario 3: garbage collection
-
-  At some point the garbage collector cleans up the ~foo~ object and
-  the our string object is cleaned up as well
-
-  file:imgs/gc4.png
 
 
 * Summary

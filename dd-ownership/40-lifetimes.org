@@ -1,0 +1,144 @@
+#+Title: Lifetimes
+#+SETUPFILE: ../reveal.setup
+
+* So how long do borrows last??
+
+* 
+
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct NumRef {
+        x: &i64,
+        y: &i64
+    }
+    
+    fn new_numref(x: i64, y: i64) -> NumRef {
+        NumRef { x: &x, y: &y }
+    }
+    
+    fn main() {
+        let num = new_numref(5, 9);
+        println!("Numref: {:?}", num);
+    }
+  #+END_SRC
+
+* Explicit lifetime syntax
+
+  + ~<'_>~ is an anonymous lifetime
+  + ~<'meep>~ is a named lifetime called "meep"
+  + ~<'static>~ is a special/ reserved lifetime
+
+* 
+
+  Does this work?  If not, what is the problem?
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct NumRef<'num> {
+        x: &'num i64,
+        y: &'num i64
+    }
+    
+    fn new_numref<'num>(x: i64, y: i64) -> NumRef<'num> {
+        NumRef { x: &x, y: &y }
+    }
+    
+    fn main() {
+        let num = new_numref(5, 9);
+        println!("Numref: {:?}", num);
+    }
+  #+END_SRC
+
+* _Lifetimes are an indicator of when your memory model is incomplete!_
+
+* 
+
+  file:imgs/numref0.png
+
+* 
+
+  file:imgs/numref1.png
+
+* 
+
+  file:imgs/numref2.png
+
+* 
+
+  file:imgs/numref3.png
+
+* 
+
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct NumRef<'num> {
+        x: &'num i64,
+        y: &'num i64
+    }
+    
+    fn new_numref<'num>(x: &'num i64, y: &'num i64) -> NumRef<'num> {
+        NumRef { x, y }
+    }
+    
+    fn main() {
+        let num = new_numref(&5, &9);
+        println!("Numref: {:?}", num);
+    }
+  #+END_SRC
+
+* Lifetimes are a way to annotate your code for the compiler
+
+  \\
+
+  You are describing your code, not forcing things to work.
+  
+* Lifetimes are types!
+
+* Lifetime bounds
+
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Wrapper<'inner, T: 'inner> {
+        t: &'inner T
+    }
+    
+    fn main() {
+        let w = {
+            let t = String::from("t");
+            Wrapper { t: &t }
+        };
+        
+        println!("Wrapper: {:?}", w);
+    }
+  #+END_SRC
+
+* Lifetimes are memory analysis tautologies
+
+* Speaking of ~'static~
+
+  + Special lifetime that is longer than any other
+    + Not necessarily forever!
+  + Some examples of ~'static~
+    + Data contained in the binary data section
+    + Heap allocated types (as long as no other lifetime bounds exist)
+    + Global variables
+
+* Example Box lifetime
+
+  + By default the lifetime bound on values contained in ~Box~ is ~'static~
+  + This can be changed
+
+  #+BEGIN_SRC rust
+    fn to_iter<'list>(v: &'list Vec<u8>) -> Box<impl Iterator<Item=&u8> + 'list> {
+        Box::new(v.iter())
+    }
+    
+    fn main() {
+        let v = vec![1, 2, 3, 4];
+        for i in to_iter(&v) {
+            println!("{}", i);
+        }
+    }
+  #+END_SRC
+  
+* [[file:README.org][Back to index]]

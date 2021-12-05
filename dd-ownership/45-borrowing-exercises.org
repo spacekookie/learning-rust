@@ -1,0 +1,6 @@
+#+Title: Borrowing Exercises
+#+SETUPFILE: ../reveal.setup
+
+* Nested borrows
+  
+  So far examples have been simple.  Let's try nesting some borrows

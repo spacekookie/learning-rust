@@ -98,9 +98,6 @@
   #+END_SRC
 
 * Cloning technology
-
-  #+RESULTS:
-  : foo
     
   #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
       digraph {
@@ -121,16 +118,16 @@
   #+RESULTS:
   [[file:imgs/gen/clone-move.png]]
 
-* _Cloning is always a deep-clone and can become costly!_
+* Cloning is always a deep-clone and _can_ become costly!
 
 * ~Copy~ vs ~Clone~
 
-  Alternatively types can implement ~Copy~!  This is meant for data
+  Alternatively types can implement ~Copy~.  This is meant for data
   that can be quickly copied in-memory (using ~memcopy~) and are
   allowed to be copied.
 
   #+BEGIN_SRC rust
-    #[derive(Copy, Clone, Debug)]
+    #[derive(Copy, Clone, Debug)] // <-- Add both Copy _and_ Clone here
     struct Dot { x: i64, y: i64 }
     
     fn main() {
@@ -144,6 +141,9 @@
     }
   #+END_SRC
 
+  Important: ~Copy~ is just a marker trait. A ~Copy~ type must still
+  implement ~Clone~!
+  
 * Quiz #2
 
   What happens if we call ~use_file~ twice?
@@ -152,7 +152,7 @@
     use std::fs::File;
     
     fn main() {
-        let f = File::open("test.txt").unwrap();
+        let f = File::open("/dev/zero").unwrap();
     
         use_file(f);
         use_file(f);
@@ -171,7 +171,7 @@
     use std::fs::File;
     
     fn main() {
-        let f = File::open("test.txt").unwrap();
+        let f = File::open("/dev/zero").unwrap();
         drop(f);
     
         // 'f' no longer available!
@@ -188,7 +188,7 @@
   #+BEGIN_SRC rust
     #[inline]
     fn drop<T>(_x: T) {
-        /// take ownership, drop out of scope
+        // take ownership, drop out of scope
     }
   #+END_SRC
 
@@ -217,6 +217,10 @@
 
 * In conclusion
 
-  Ownership allows the compiler to _reason about our code_
+  + Ownership allows the compiler to _reason about our code_
+    + This is good
+  + Ownership places _restrictions and limitations_ on our code
+    + This is bad
+    + ...or is it?
   
   [[file:README.org][Back to index]]

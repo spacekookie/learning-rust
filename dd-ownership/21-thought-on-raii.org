@@ -1,0 +1,49 @@
+#+Title: A thought on RAII
+#+Subtitle: For you C++ weirdos in the audience :)
+#+SETUPFILE: ../reveal.setup
+
+* Rust enforces RAII
+
+  Resource Acquisition Is Initialisation
+
+* 
+
+  This prevents memory leaks and provides a linear structure for
+  memory ownership
+
+* Lifecycle
+
+    #+BEGIN_SRC dot :file imgs/gen/raii.png :cmdline -Kdot -Tpng
+      digraph {
+          node [color=teal, shape=box, fontsize=24, margin="0.25,0.25"]
+          rankdir = "LR"
+      
+          Destruction [color=red]
+          Acquisition [color=green]
+          Lifetime [color=green]
+          Borrow [color=cyan]
+          BorrowDrop [label="Borrow out\nof scope", color=cyan]
+      
+          Start -> Acquisition -> Lifetime -> "Out of scope" -> Destruction;
+          Lifetime -> Borrow -> BorrowDrop -> Lifetime
+      }
+  #+END_SRC
+
+* What if a borrow outlives its owner?
+
+* Destructor trait
+
+  + Rust provides destructor mechanics via ~Drop~ trait
+  + Provides mutible access before being cleaned up
+
+  #+BEGIN_SRC rust
+    struct Point(i64, i64);
+    
+    impl Drop for Point {
+        fn drop(&mut self) {
+            println!("De-allocating Point ({}:{})", self.0, self.1);
+        }
+    }
+  #+END_SRC
+
+* [[file:README.org][Back to index]]

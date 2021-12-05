@@ -1,0 +1,153 @@
+#+Title: Borrowing
+#+REVEAL_TITLE_SLIDE_BACKGROUND: ./imgs/ned_flanders.jpg
+#+SETUPFILE: ../reveal.setup
+
+* Anything owned can be borrowed
+
+* 
+
+  Ownership provides a good base for managing memory, but becomes
+  impractical for larger programs!
+
+* 
+
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Dot {
+        x: i64,
+        y: i64,
+    }
+    
+    fn main() {
+        let mut dot = Dot { x: 2, y: 1 };
+        inspect(&dot);
+        dot.x = 1;
+        inspect(&dot);
+    }
+    
+    fn inspect(dot: &Dot) {
+        println!("An interesting dot {:?}", dot);
+    }
+  #+END_SRC
+
+* Immutable borrow
+
+  + Gives access to memory without ownership
+  + Doesn't allow to make changes!
+
+  #+BEGIN_SRC dot :file imgs/gen/borrow1.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR"
+    
+        main [color=darkgreen, shape=box]
+        inspect1 [label="inspect", color=cyan, shape=box]
+        inspect2 [label="inspect", color=cyan, shape=box]
+        🗑️ [color=red, shape=box]
+        main -> inspect1 [label="&", style=dashed]
+        main -> inspect2 [label="&", style=dashed]
+        main -> 🗑️;
+    }
+  #+END_SRC
+
+* What if you want to change things?
+* 
+
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Dot { x: i64, y: i64, }
+    
+    fn main() {
+        let mut dot = Dot { x: 2, y: 1 };
+        println!("Before: {:?}", dot);
+        move_by(&mut dot, 1, 3);
+        println!("After: {:?}", dot);
+    }
+    
+    fn move_by(dot: &mut Dot, x: i64, y: i64) {
+        dot.x += x;
+        dot.y += y;
+    }
+  #+END_SRC
+  
+* Mutable borrow
+
+  + Gives mutable access to memory without ownership
+  + Can make changes in-place
+
+  #+BEGIN_SRC dot :file imgs/gen/borrow2.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR"
+    
+        main [color=darkgreen, shape=box]
+        println1 [label="println", color=cyan, shape=box]
+        move_by [color=orange, shape=box]
+        println2 [label="println", color=cyan, shape=box]
+        🗑️ [color=red, shape=box]
+        main -> println1 [label="&", style=dashed]
+        main -> move_by [label="&mut", style=dashed]
+        main -> println2 [label="&", style=dashed]
+        main -> 🗑️;
+    }
+  #+END_SRC
+
+* Borrow types
+
+  + &T :: Immutable borrow of ~T~
+  + &mut T :: Mutable borrow of ~T~
+  + &&T :: Immutable borrow of an immutable borrow of ~T~
+  + ... :: Etc.
+
+* Borrow rules
+
+  Just like ownership, Rust imposes some rules for borrows!
+
+  + An unlimited number of immutable borrows
+  + _Exactly one_ mutable borrow
+
+  Ownership remains in the calling context, which handles deallocation
+
+* Don't try this at home
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let mut og = String::from("Yikes!");
+        let b1 = &og;
+        let b2 = &og;
+        let b3 = &mut og;
+    
+        println!("{}, {}, {}", b1, b2, b3);
+    }
+  #+END_SRC
+
+* Just like ownership: _this is part of the Rust type system!_
+
+* Quiz #1
+
+  Why does this code not compile?
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Dot { x: i64, y: i64, }
+    
+    fn main() {
+        let mut dot = Dot { x: 2, y: 1 };
+        increment(&mut dot, &mut dot.x, 3);
+    }
+    
+    fn increment(dot: &mut Dot, x: &mut i64, num: u64) {
+        dot.y += num;
+        *x += num;
+    }
+  #+END_SRC
+
+* Conclusion
+
+  + Borrows are vital for building complex applications
+  + There are some limitations attached.
+  + Fundamental part of the Rust type system.  You can't "turn off"
+    the borrow checker
+    
+  [[file:README.org][Back to index]]
+

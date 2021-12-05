@@ -12,26 +12,41 @@
 
   + [[file:10-memory-management.org][Memory management basics]]
   + [[file:20-why-ownership.org][Why ownership?]]
-  + [[file:25-ownership-quiz.org][Exercise: taking ownership]]
-  + 
+  + [[file:21-thought-on-raii.org][A thought on RAII]]
+  + [[file:25-ownership-quiz.org][Exercise: seizing ownership]]
+  + [[file:30-borrowing.org][Borrowing]]
+  + [[file:40-lifetimes.org][Lifetimes]]
+  + [[file:35-borrowing-exercises.org][Exercise: lend me your T]]
+  + [[file:50-threading.org][Threading & Ownership]]
+  + [[file:51-race-conditians.org][Thoughts on race conditions]]
+  + [[file:55-thread-exercises.org][Exercise: concurrently borrowing stuff]]
+  + Concurrency patterns: Arc & Mutex
+  + Concurrency patterns: Channels
+  + Advanced Exercise: Load-balanced web server
 
-* Build these slides
+  \\
+
+  + Exercise overview
   
-   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these
-   slides, but if you must build them yourself, you need to have Emacs
-   (v26+) and org-mode installed!
+* About these slides
 
-   The following function will export the full course into an HTML
-   slide tree.
+  You can find a copy of these slides at
+  https://teach.spacekookie.de/rust/ownership!  If you find any
+  mistakes, please feel free to send a merge-request on [[https://git.irde.st/kookiespace/teaching-rust/][Gitlab]]!
 
-   #+INCLUDE: "../ci/export-course.el" src emacs-lisp
+* How to build
+
+  These slide-decks are built with emacs and [[https://orgmode.org][org-mode]].  The following
+  function will export the full course into an HTML slide tree.
+
+  #+INCLUDE: "../ci/export-course.el" src emacs-lisp
    
 * License
 
-   This course, as well as any associated media assets is licensed
-   under Creative Commons CC-BY-SA 3.0.  All associated code examples
-   are licensed under the GNU General Public License Version 3.0 (or
-   later).
+  This course, as well as any associated media assets is licensed
+  under Creative Commons CC-BY-SA 4.0.  All associated code examples
+  are licensed under the GNU General Public License Version 3.0 (or
+  later).
 
-   See the [[../licenses][licenses]] directory for complete copies of the applicable
-   license texts.
+  See the [[../licenses][licenses]] directory for complete copies of the applicable
+  license texts.

@@ -1,0 +1,10 @@
+/*********************************************
+ * RUST PLUGIN STYLES
+ *********************************************/
+
+.result {
+    background: #121212;
+    color: #FFFFFF;
+    overflow: scroll;
+    max-height: 200px;
+}

@@ -33,4 +33,4 @@ This file contains common reveal.js export settings for org-mode.
 
 ** Setup extra javascript
 
-   #+REVEAL_SLIDE_HEADER: <script src="../.templates/plugin/rust/rustplay.js"></script>
+   #+REVEAL_SLIDE_HEADER: <script src="../.templates/plugin/rust/rustplay.js"></script><link rel="stylesheet" href="../.templates/plugin/rust/rustplay.css"/>

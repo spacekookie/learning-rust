@@ -1,0 +1,99 @@
+#+Title: Lend me your ~&T~
+#+Subtitle: Practical application of borrows, lifetimes, and more
+#+SETUPFILE: ../reveal.setup
+
+* Let's put theory into praxis!
+
+* 
+
+  #+BEGIN_SRC rust
+    fn make_vec<'num>(x: &'num i64, y: &'num i64, z: &'num i64) -> Vec<&'num i64> {
+        // ... fill in this function
+    }
+    
+    fn main() {
+        let (x, y, z) = (1, 5, 5);
+        let v = make_vec(&x, &y, &z);   
+        println!("Vector: {:?}", v);
+    }
+  #+END_SRC
+
+* 
+
+  Why doesn't this code compile?
+  
+  #+BEGIN_SRC rust
+    #[derive(Debug)]
+    struct Wrapper<'buf> {
+        inner: &'buf mut Vec<u8>,
+    }
+    
+    impl<'buf> Wrapper<'buf> {
+        fn new() -> Self {
+            Self { inner: vec![] }
+        }
+    }
+    
+    fn main() {
+        let mut v = vec![];
+        let w = Wrapper::new();
+    
+        w.inner.push(1);
+        w.inner.push(3);
+        w.inner.push(5);
+    
+        println!("Wrapper: {:?}", w);
+    }
+  #+END_SRC
+
+  What else is interesting about this example?
+
+* Multiple lifetimes 1
+
+  Why is the lifetime ~'b~ redundant?
+  
+  #+BEGIN_SRC rust
+    fn compare<'a, 'b>(a: &'a String, b: &'b String) {
+        if a.len() > b.len() {
+            println!("{:?} is longer", a);
+        } else {
+            println!("Hard to say really...");    
+        }
+    }
+    
+    fn main() {
+        let a = String::from("abc");
+        let b = String::from("de");
+        compare(&a, &b);
+    }
+  #+END_SRC
+
+* Multiple lifetimes 2
+
+  Why are multiple lifetimes needed here? :)
+
+  #+BEGIN_SRC rust
+    struct Pair<'a> {
+        x: &'a i32,
+        y: &'a i32,
+    }
+    
+    fn main() {
+        let x = 3; let r;
+        {
+            let y = 4;
+            let pair = Pair { x: &x, y: &y };
+            r = pair.x;
+        }
+    
+        println!("{}", r);
+    }
+  #+END_SRC
+  
+* Box lifetimes
+
+  #+BEGIN_SRC rust
+    // .... ????
+  #+END_SRC
+  
+* [[file:README.org][Back to index]]

@@ -1,0 +1,9 @@
+#+Title: Ownership exercises
+#+Author: Katharina Fey
+#+SETUPFILE: ../../html.setup
+
+This directory contains various exercises to practise concepts taught
+in this course.  To compile them you require ~rustc~ and ~cargo~
+installed on your system.
+
+
