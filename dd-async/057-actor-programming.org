@@ -1,0 +1,67 @@
+#+Title: Actor programming
+#+SETUPFILE: ../reveal.setup
+
+* Actor programming is a model
+
+* Actor model
+
+  + Split your program into small pieces (called an "Actor")
+  + Each actor has its own state and can change it
+  + Each actor can send and receive "Messages"
+
+  That's it. That's really all there is to it
+  
+* 
+
+  file:imgs/actor0.png
+  
+* 
+
+  file:imgs/actor1.png
+  
+* 
+
+  file:imgs/actor2.png
+  
+* 
+
+  file:imgs/actor3.png
+
+* Actors in Rust
+
+  Some frameworks exist already!
+  
+  + Actix
+  + Ockam (← my job basically)
+
+  #+BEGIN_SRC rust
+    use actix::{Actor, Handler, Context, System};
+    
+    struct Calculator;
+    
+    impl Actor for Calculator {
+        type Context = Context<Self>;
+    }
+    
+    #[derive(Message)]
+    #[rtype(result = "usize")]
+    struct Sum(usize, usize);
+    
+    impl Handler<Sum> for Calculator {
+        type Result = usize;
+    
+        fn handle(&mut self, msg: Sum, ctx: &mut Context) -> Self::Result {
+            msg.0 + msg.1
+        }
+    }
+    
+    #[actix::main]
+    async fn main() {
+        let addr = Calculator.start();
+        let res = addr.send(Sum(10, 5)).await;
+        println!("Result: {:?}", res);
+    }
+    
+  #+END_SRC
+
+* [[file:README.org][Back to index]]

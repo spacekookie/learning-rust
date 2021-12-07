@@ -50,7 +50,7 @@
 
 * What does this do so far?
 
-  + Polling this future will _never_ return ~Poll::Ready(())~
+  + Polling this future will never return ~Poll::Ready(())~
   + This future will only be polled _once_
   + But we stored a ~Waker~!  That is important
 
@@ -72,7 +72,6 @@
   + Putting all this together we need another mechanism: select!
   + In ~tokio~ this is ~tokio::future::select~
   + For ~async_std~ you need to use ~futures~ crate
-    + Slightly more cumbersome API unfortunately :(
 
   #+BEGIN_SRC rust
     async fn next_event(&self, shutdown: &ShutdownFuture) -> bool {
@@ -115,3 +114,5 @@
         shutdown.stop();
     }
   #+END_SRC
+
+* [[file:README.org][Back to index]]

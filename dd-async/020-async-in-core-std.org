@@ -109,6 +109,6 @@
   The Rust playground will be somewhat useless in these slides.  Run
   your own examples!
   
-  https://teach.spacekookie.de/async
+  https://learn.spacekookie.de/rust/dd-async
 
 * [[file:README.org][Back to index]]

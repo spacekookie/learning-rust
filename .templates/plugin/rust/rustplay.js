@@ -47,7 +47,7 @@ function addButtons() {
         button.onclick = () => {
             const code = extendCode(button.parentNode.querySelector('code').textContent);
             const payload = encodeURIComponent(code);
-            const url = `https://play.rust-lang.org/?version=stable&code=${payload}`;
+            const url = `https://play.rust-lang.org/?version=stable&edition=2021&code=${payload}`;
 
             window.open(url, '_blank');
         };
@@ -56,6 +56,10 @@ function addButtons() {
 
 // Wrap code in a way that Rust playground will like it
 function extendCode(code) {
+    if (code.match(/^async fn main/m)) {
+        return code; // if there's an async fn main in there we skip the rest
+    }
+    
     if (!code.match(/^fn \w+/m)) { // No functions, wrap all in main
         code = "fn main() {\n" + code + "\n}"
     } else if (!code.match(/^fn main/m)) { // some functions, no main, add an empty one

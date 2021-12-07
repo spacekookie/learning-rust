@@ -1,0 +1,40 @@
+#+Title: Who am I?
+#+Subtitle: Hope you care :')
+#+SETUPFILE: reveal.setup
+
+* How to reach me
+
+   + Name: *Katharina Fey*
+   + Location: *Berlin*
+   + E-mail: *kookie@spacekookie.de*
+   + Matrix: *@spacekookie:fairydust.space*
+   + IRC: *spacekookie* (on libera.chat and hackint)
+   + Twitter: *@spacekookie*
+
+* The work I do
+
+   + Distributed systems software researcher
+   + Currently working at *Ockam* (https://ockam.io)
+   + Also working on EU funded reseanch project *Irdest* (https://irde.st)
+
+* Some links to my work
+
+  + Website: *https://spacekookie.de*
+  + Gitea: *https://dev.spacekookie.de/kookie/nomicon*
+  + Gitlab: *https://git.irde.st/spacekookie*
+  + GitHub: *https://github.com/spacekookie*
+
+* I teach workshops!
+
+  (oh really??)
+
+  + Teaching Rust workshops since 2018
+  + Developed a Nix(OS) workshop in 2020
+  + Does your company need trainings?  Contact me for details!
+
+* Finally
+
+  You can find this teaching material at
+  https://learn.spacekookie.de/rust.
+
+  [[file:README.org][Back to overview]]

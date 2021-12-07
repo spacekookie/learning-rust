@@ -12,9 +12,9 @@
   + embassy :: Rust Embedded async executor and HALs
   + fuchsia-async :: Google's Fuchsia OS executor
 
-* The smallest runtime: ~async-task~ & ~futuress-lite~
+* The smallest runtime: ~async-task~ & ~futures-lite~
 
-  #+INCLUDE: "exercises/runtimes/src/bin/async-task.rs" src rust
+  #+INCLUDE: "exercises/03-runtimes/src/bin/async-task.rs" src rust
 
 * ~block_on~
 
@@ -76,7 +76,6 @@
      }
    #+END_SRC
 
-   
 
 ** Oh and a smol other thing
 
@@ -119,13 +118,12 @@
 
   We can easily create tasks without the syntactic sugar
   
-  #+INCLUDE: "exercises/runtimes/src/bin/async-std.rs" src rust
+  #+INCLUDE: "exercises/03-runtimes/src/bin/async-std.rs" src rust
 
 * ~tokio~
 
   We can easily create tasks without the syntactic sugar
   
-  #+INCLUDE: "exercises/runtimes/src/bin/tokio.rs" src rust
+  #+INCLUDE: "exercises/03-runtimes/src/bin/tokio.rs" src rust
 
 * [[file:README.org][Back to index]]
-

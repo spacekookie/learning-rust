@@ -1,5 +1,6 @@
 use std::collections::VecDeque;
 use std::sync::{Arc, Mutex};
+use std::thread;
 
 /// Implement this mailbox which can queue and pop messages from its
 /// internal state without requiring external mutable access.
@@ -13,17 +14,19 @@ struct Mailbox {
 impl Mailbox {
     /// Create a new mailbox object
     pub fn new() -> Self {
-        todo!()
+        Self {
+            inner: Arc::new(Mutex::new(VecDeque::new())),
+        }
     }
-    
+
     /// Queue a new message to the back
     pub fn queue(&self, s: String) {
-        todo!()
+        self.inner.lock().unwrap().push_back(s);
     }
-    
+
     /// Pop the first message off the front
     pub fn pop(&self) -> Option<String> {
-        todo!()
+        self.inner.lock().unwrap().pop_front()
     }
 }
 
@@ -34,28 +37,31 @@ pub struct Generator {
 }
 
 impl Generator {
-    pub fn start(mb: Mailbox) {
+    fn start(mb: Mailbox) {
         Self { mb }.spawn();
     }
-    
+
     fn spawn(self) {
         thread::spawn(move || {
-            todo!()
+            let mb = self.mb;
+            for i in 0..20 {
+                mb.queue(format!("String #{}", i));
+            }
         });
     }
 }
 
 fn main() {
     let mb = Mailbox::new();
-    
-    { // Use this thread to generate message (2x)
-        let mb = mb.clone();
-        thread::spawn(|| { todo!() });
-    }
+
+    Generator::start(mb.clone());
+    Generator::start(mb.clone());
+
+    std::thread::sleep_ms(100);
     
     while let Some(msg) = mb.pop() {
         println!("Message received: {}", msg);
     }
-    
+
     println!("No more messages...");
 }

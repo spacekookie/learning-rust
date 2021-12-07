@@ -13,7 +13,7 @@
   This pattern is a very simple multi-producer, single-consumer
   channel!
   
-  #+BEGIN_SRC dot :file imgs/gen/clone-move.png :cmdline -Kdot -Tpng
+  #+BEGIN_SRC dot :file imgs/gen/mailbox-simple.png :cmdline -Kdot -Tpng
     digraph {
         node [shape=box, fontsize=24, margin="0.25,0.25"]
         rankdir = "LR"
@@ -27,6 +27,9 @@
         Mailbox -> Consumer -> Mailbox;
     }
   #+END_SRC
+
+  #+RESULTS:
+  [[file:imgs/gen/mailbox-simple.png]]
 
 * 
 

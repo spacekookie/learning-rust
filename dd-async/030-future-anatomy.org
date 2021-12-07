@@ -22,14 +22,14 @@
 
   A simple future which will never complete
 
-   #+INCLUDE: "exercises/future-anatomy/src/never.rs" src rust
+   #+INCLUDE: "exercises/01-future-anatomy/src/never.rs" src rust
 
 * Await progress
 
   + In this example we're using ~async-std~
   + You can run this example via /~cargo run --bin 01_never~/
 
-  #+INCLUDE: "exercises/future-anatomy/src/bin/01_never.rs" src rust
+  #+INCLUDE: "exercises/01-future-anatomy/src/bin/01_never.rs" src rust
 
 * So what's up with ~Pin~?
 
@@ -78,15 +78,15 @@
   + Set internal boolean to ~true~ on first poll
   + Return ~Poll::Ready(())~ on second poll
   
-  #+INCLUDE: "exercises/future-anatomy/src/twice.rs" src rust
+  #+INCLUDE: "exercises/01-future-anatomy/src/twice.rs" src rust
 
 * Not so useful...
 
   + The future only gets polled once!
   
   #+BEGIN_SRC console
-    ❤ (tempest) ~/P/t/t/d/e/future-anatomy> cargo run --bin 02_twice
-     Compiling future-anatomy v0.1.0 (/home/Projects/talks/teaching-rust/dd-async/exercises/future-anatomy)
+    ❤ (tempest) ~/P/t/t/d/e/01-future-anatomy> cargo run --bin 02_twice
+     Compiling 01-future-anatomy v0.1.0 (/home/Projects/talks/teaching-rust/dd-async/exercises/01-future-anatomy)
       Finished dev [unoptimized + debuginfo] target(s) in 0.69s
        Running `target/debug/02_twice`
      [src/twice.rs:17] Poll::Pending = Pending
@@ -115,7 +115,7 @@
 
 * We need to wake our future again
   
-  #+INCLUDE: "exercises/future-anatomy/src/good_twice.rs" src rust
+  #+INCLUDE: "exercises/01-future-anatomy/src/good_twice.rs" src rust
 
 * 
 
@@ -141,7 +141,7 @@
 * 
 
   #+BEGIN_SRC console
-     ❤ (tempest) ~/P/t/t/d/e/future-anatomy> cargo run --bin 03_twice
+     ❤ (tempest) ~/P/t/t/d/e/01-future-anatomy> cargo run --bin 03_twice
     Finished dev [unoptimized + debuginfo] target(s) in 0.03s
      Running `target/debug/03_twice`
     Future says: ()

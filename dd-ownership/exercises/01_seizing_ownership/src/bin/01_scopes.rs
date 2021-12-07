@@ -5,5 +5,5 @@ fn main() {
         println!("x: {}", x);
     }
 
-    println!("x: {}, x");
+    println!("x: {}", x);
 }

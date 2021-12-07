@@ -1,0 +1,77 @@
+#+Title: Future Patters
+#+Subtitle: WakeNotify<T>
+#+SETUPFILE: ../reveal.setup
+
+* 
+
+You may have noticed a problem when wrapping datastructures in
+asynchronous locking mechanisms
+
+* 
+
+  Insert items into collection on task 1 and busy-loop on task 2
+  
+  #+BEGIN_SRC rust
+    // task 1
+    collection.lock().await.push_back(42);
+    
+    // task2
+    let num = loop {
+        if let Some(num) = collection.lock().await.pop_front() {
+            num
+        } else {
+            continue
+        }
+    };
+  #+END_SRC
+
+* Hot take 🔥 busy loops are bad
+
+* Solution? WakeNotify pattern
+
+  + Wrap any collection in ~Notify<T>~
+  + Poll once, then store a waker
+  + When inserting, call ~wake()~
+  
+  #+BEGIN_SRC rust
+    use core::task::Waker;
+    pub struct Notify<T> {
+        inner: T,
+        waker: Option<Waker>
+    }
+  #+END_SRC
+
+* WakeNotify pattern
+
+  #+BEGIN_SRC rust
+    // A nice and short type signature :)
+    let collection = Arc::new(Mutex::new(Notify::new(VecDeque::new())));
+    
+    // task 1
+    let mg = c.lock().await;
+    mg.push_back(42);
+    Notify::wake(&*mg);
+    // mg goes out of scope to de-lock the Mutex
+  #+END_SRC
+
+* The poll task
+
+  #+BEGIN_SRC rust
+    futures::future::poll_fn(|ctx| {
+        let mut lock = Box::pin(t.lock()); // We box this future to easily be able to pin it
+        match Pin::new(&mut lock).poll(ctx) { // Then poll it for progress
+            Poll::Ready(ref mut mg) => match mg.pop_front() {
+                Some(v) => Poll::Ready(v), // Return data if there was any
+                None => {                  // Otherwise install a Waker
+                    Notify::add_waker(mg, ctx.waker().clone());
+                    Poll::Pending
+                }
+            },
+            _ => Poll::Pending, // If we were not able to acquire a lock,
+                                // Mutex will wake us once we can!
+        }
+    })
+    .await;
+  #+END_SRC
+
+* [[file:README.org][Back to index]]

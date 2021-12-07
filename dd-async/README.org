@@ -13,11 +13,13 @@
    + [[./010-what-is-async.org][Async theory: what is async?]]
    + [[file:020-async-in-core-std.org][Async foundations in core/std]]
    + [[file:030-future-anatomy.org][Anatomy of a basic Future]]
+   + [[file:060-exercise-timer.org][Exercise: Timer Future]]
+   + [[file:035-async-patterns.org][Basic async patterns]]
+   + [[file:050-runtimes.org][Dive into runtimes]]
    + [[file:040-shutdown-select.org][Future pattern: shutdown select]]
-   + [[file:50-runtimes.org][Runtimes]]
-   + Excursion: scheduling
-   + Excursion: channels & backpressure
-   + Tasks, futures, and threads
+   + [[file:055-futures-wakenotify.org][Future pattern: WakeNotify]]
+   + [[file:057-actor-programming.org][Side-track: Actor programming]]
+   + [[file:061-exercise-reactor.org][Exercises]]
 
    \\
 
