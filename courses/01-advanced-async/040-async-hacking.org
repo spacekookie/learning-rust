@@ -41,15 +41,23 @@ Pick a runtime/ framework/ design philosophy!
 
 * Boilerplate crate
 
-https://github.com/spacekookie/learning-rust/
+\\
+
+https://github.com/spacekookie/learning-rust/tree/main/courses/01-advanced-async/exercises/06-async-chat
+
+(great short url)
 
 * Other utilities
+
+\\
 
 + serde :: Serialise data (and pick a format)
 + futures-rs :: Lots of great combinators for working with futures
   (re-exported from smol)
 
 * Have questions?  Getting stuck?
+
+\\
 
 *YELL AT ME (or the other teaching assistants)!*
 

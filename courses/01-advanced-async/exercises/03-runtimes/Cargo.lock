@@ -589,6 +589,7 @@ dependencies = [
  "async-std",
  "async-task",
  "flume",
+ "futures-lite",
  "once_cell",
  "smol",
  "tokio",

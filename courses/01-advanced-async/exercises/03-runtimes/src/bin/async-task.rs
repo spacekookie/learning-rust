@@ -1,8 +1,8 @@
 use std::{future::Future, panic::catch_unwind, thread};
 
 use async_task::{Runnable, Task};
+use futures_lite::future;
 use once_cell::sync::Lazy;
-use smol::future;
 
 fn main() {
     let t = spawn(async {

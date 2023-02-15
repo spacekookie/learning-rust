@@ -5,10 +5,8 @@
 
 \\
 
-+ tokio :: A popular async ecosystem with HTTP, gRPC, and tracing
-  frameworks.
-+ async-std/ smol :: A project that provides asynchronous counterparts
-  to standard library components.
++ tokio :: A very "batteries included" runtime and async library
++ async-executor :: The runtime behind ~async-std~ and ~smol~
 + embassy :: Rust Embedded async executor and HALs
 + fuchsia-async :: Google's Fuchsia OS executor
 
