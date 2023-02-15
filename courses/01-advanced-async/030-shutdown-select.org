@@ -1,12 +1,54 @@
-#+Title: Shutdown ~select!~
-#+SETUPFILE: ../reveal.setup
+#+Title: Shutting down async systems
+#+SETUPFILE: ../../reveal.setup
 
-* Theory
+* Q: How do you stop disconnected, infinite futures?
 
-  + In a system with many disconnected looping tasks...
-  + ...use a future to terminate a runtime machine
-  + Use ~select!()~ to run two futures at the same time
+* A: Run state!
 
+\\
+
+#+BEGIN_SRC rust
+  let run_state = Arc::new(AtomicBool::new(true));
+
+  let run2 = Arc::clone(&run_state);
+  smol::spawn(async move {
+      while run2.load(Ordering::Relaxed) {
+          // Do things here...
+      }
+  });
+
+  // Somewhere else in your program
+  run_state.fetch_and(false, Ordering::Relaxed);
+#+END_SRC
+
+* What problems might there be?
+
+* 
+
+#+BEGIN_SRC rust
+    while run2.fetch(Ordering::Relaxed) {
+      // Do things here...
+    }
+#+END_SRC
+
++ Only check run-state once per loop
++ Once the loop has started it can't be stopped again!
++ Is this a good or a bad thing?  YOU DECIDE!
+
+* Another scenario
+
+\\
+
+All tasks are connected to each other via channels.  A task shuts down
+when its channel sender stops existing.
+
++ A produces data for B and C
++ B produces data for D and E
++ C produces data for F and G
+
+* Shutdown will be staggered!
+
+F will still be running while B and C are already shut down.
 
 * Basic structure
 
@@ -22,7 +64,7 @@
     struct ShutdownFuture(Arc<AtomicBool>, Option<Waker>);
   #+END_SRC
 
-* Implement ~Future~ trait
+* 
 
   + Next up we implement the ~Future~ trait
   + When we are polled, we check the boolean for its state

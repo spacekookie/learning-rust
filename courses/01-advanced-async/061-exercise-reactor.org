@@ -1,5 +1,5 @@
 #+Title: Exercises
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * What do you want to work on?
 

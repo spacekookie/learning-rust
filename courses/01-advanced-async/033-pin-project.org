@@ -1,0 +1,48 @@
+#+Title: Pinning and Pin Project
+#+SETUPFILE: ../../reveal.setup
+
+* Creating ~Pin<P>~ is annoying
+
+* Scenario
+
+\\
+
++ ~Arc<Mutex<BTreeMap<VecDeque<T>>>~ as data storage
++ Async workers insert data into the map
++ Use Notify wrapper to wake consumer after inserts
+
+* 
+
+#+BEGIN_SRC rust
+  /// Poll for new work on a particular frame sequence
+  pub(super) async fn get(&self, seq: &Id) -> Frame {
+      let incoming = Arc::clone(&self.incoming);
+      future::poll_fn(|ctx| {
+          let lock = &mut incoming.lock();
+          match unsafe { Pin::new_unchecked(lock).poll(ctx) } {
+              Poll::Ready(ref mut map) => match map.get_mut(seq) {
+                  Some(ref mut vec) if vec.len() > 0 => Poll::Ready(vec.pop_front().unwrap()),
+                  Some(ref mut vec) => {
+                      Notify::register_waker(vec, ctx.waker());
+                      Poll::Pending
+                  }
+                  None => unimplemented!(), // No work queue _should_ never happen
+              },
+              _ => Poll::Pending,
+          }
+      })
+          .await
+  }
+
+#+END_SRC
+
+* Creating the Pin requires ~unsafe { }~.  Why?
+
+* Pin API
+
+\\
+
++ ~Pin<P>::new~ requires ~P: Unpin~
++ ~Unpin~: reversing Pinning (safe to move after pinning)
++ Many types _can't_ be ~Unpin~!
+

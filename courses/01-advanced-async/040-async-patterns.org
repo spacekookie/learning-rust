@@ -1,5 +1,5 @@
 #+Title: Some common async patterns
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * Async applications require concurrency-safe patterns
 
@@ -7,7 +7,7 @@
 
   + A great mechanism to avoid shared state between futures
   + Use an async channel implementation
-    + ~async-channel~ crate is part of ~async-std~
+    + ~async-channel~ crate (re-exported from ~async-std~)
     + ~flume~ crate provides both sync and async channel APIs
 
 * 
@@ -16,7 +16,7 @@
 
 * Bounded vs unbounded
 
-  *Controversial opinion time*: don't use unbounded channels!  Why?
+  *+Not so+ controversial opinion time*: don't use unbounded channels!  Why?
 
   \\
   
@@ -50,27 +50,11 @@
 
 * Backpressure example
 
-  file:imgs/bp4.png
-
-* Backpressure example
-
-  file:imgs/bp5.png
-
-* Backpressure example
-
   file:imgs/bp6.png
 
 * Backpressure example
 
-  file:imgs/bp7.png
-
-* Backpressure example
-
   file:imgs/bp8.png
-
-* Backpressure example
-
-  file:imgs/bp9.png
 
 * Backpressure example
 
@@ -117,7 +101,7 @@
 
 * Synchronisation and Locking
 
-  + Avoid using ~std::sync~ types (they are preemptive)!
+  + Avoid using certain ~std::sync~ types (Mutex, RwLock, ...)
   + ~async_std::sync~ or ~tokio::sync~ are better, async-safe
     alternatives
 

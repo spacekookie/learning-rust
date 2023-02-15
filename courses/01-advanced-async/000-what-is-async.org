@@ -1,6 +1,6 @@
 #+Title: What is async?
 #+Subtitle: We just don't know yet
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * 
 
@@ -59,7 +59,7 @@
 * Executors
 
   + Acts as a scheduler for async code
-  + Employes cooperative multitasking between futures
+  + Use cooperative multitasking between futures
   + "Wake up" future when new work can be done
 
 * How do we know when to wake?

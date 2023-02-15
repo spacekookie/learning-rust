@@ -1,6 +1,6 @@
 #+Title: Future Patters
 #+Subtitle: WakeNotify<T>
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * 
 

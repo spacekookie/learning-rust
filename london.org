@@ -1,0 +1,44 @@
+* Async Workshop outline
+
+** Section 1: Brief introduction to Async
+
+Give everyone in the workshop a chance to catch up to a simple
+example.
+
+~ 30 minute presentation (interactive, with questions) on Async in
+general, how it works in Rust (briefly) and some common patterns/
+foot-guns around writing Futures.
+
+45-60 minute excercise: write a Future abstraction for a simple I/O
+operation (some kind of socket ? alternatively a small example
+library)
+
+** Section 2: Reactors and signals
+
+~ 30 minute presentation: Explain reactor systems, signals, wakers,
+and interesting ways to interact with them.
+
+45-60 minute excercise: write/ solve a small puzzle around Futures and
+wake-ups.  Something that has a wake-up deadlock and figuring out why
+and fixing it.
+
+** Section 3: Advanced patterns
+
+~ 30 minute presentation: Various advanced patterns around managing
+signals or avoiding needing them.
+
+45-60 minute excercise: variation on the last excercise but using a
+more advanced/ high-level signal management mechanism.
+
+** Section 4: Runtime, Reactor & Context
+
+30-45 minute presentation: overview of missing pieces that are needed
+for an Async runtime: signal management, task management,
+asynchronously spawning work, thread management, memory management,
+etc.
+
+This section uses the "smol" crates extensively to showcase how a
+runtime can be structured.
+
+Open-ended excercise: using a basic structure and some of the smol
+crates to draw the rest of the elephant.

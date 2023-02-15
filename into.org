@@ -28,8 +28,8 @@
 
   (oh really??)
 
-  + Teaching Rust workshops since 2018
-  + Developed a Nix(OS) workshop in 2020
+  + Rust workshops since 2018
+  + Nix  workshops since 2020
   + Does your company need trainings?  Contact me for details!
 
 * Finally
@@ -37,4 +37,4 @@
   You can find this teaching material at
   https://learn.spacekookie.de/rust.
 
-  [[file:README.org][Back to overview]]
+* [[file:README.org][Back to overview]]

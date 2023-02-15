@@ -1,9 +1,9 @@
 #+Title: Anatomy of a future
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * Lifecycle
 
-  file:imgs/gen/future-lifecycle.png
+  file:imgs/gen/future-lifecycle2.png
 
 * Future trait
 
@@ -24,6 +24,12 @@
 
    #+INCLUDE: "exercises/01-future-anatomy/src/never.rs" src rust
 
+* Writing a simple future
+
+A simple future which will immediately complete
+
+#+INCLUDE: "exercises/01-future-anatomy/src/always.rs" src rust
+
 * Await progress
 
   + In this example we're using ~async-std~
@@ -33,7 +39,7 @@
 
 * So what's up with ~Pin~?
 
-** Pin side-track
+** Pin (at a high level)
 
   + Pin is a way to instruct the Rust compiler to not allow moving of objects
   + Futures (internally) require self-referential structs
@@ -67,6 +73,14 @@
   
   file:imgs/pin12.png
   
+** Where does my future live?
+
+\\
+
++ Before being polled a future must be pinned to a particular place in memory
++ Try to be aware of where this is
++ Pin will create errors when trying to move the future
+
 ** Want to learn more?
 
    file:imgs/rustlatam2019.png
@@ -94,7 +108,7 @@
 
 * 
 
-  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle2.png :cmdline -Kdot -Tpng
+  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle3.png :cmdline -Kdot -Tpng
         digraph {
             node [shape=box, fontsize=24, margin="0.25,0.25"]
             rankdir = "LR";

@@ -1,0 +1,61 @@
+#+Title: Rust async deep-dive course
+#+Author: Katharina Fey
+#+SETUPFILE: ../../html.setup
+
+** Introduction
+
+  This is an _intermediate level_ course, targeted at developers who
+  have at least _some familiarity with Rust and async development_
+  models.
+
+** Prerequisites
+
++ [[./010-what-is-async.org][Async theory: what is async?]]
+
+
+** Section 1: Basic async I/O
+
++ [[file:010-async-in-core-std.org][Async in core/std]]
++ [[file:011-future-anatomy.org][Anatomy of a Future]]
++ [[file:012-exercise-basic.org][Exercise: Write a basic Async wrapper]]
+
+** Section 2: Signals & Reactor loops
+
++ [[file:020-signals.org][What are signals?]]
++ [[file:022-excercise-real-wake.org][Exercise: Write a _better_ Async wrapper]]
+
+** Section 3: Async Patterns
+
++ [[file:033-channels.org][Pattern: Channels]]
++ [[file:030-shutdown-select.org][Pattern: Shutdown select]]
++ [[file:031-futures-wakenotify.org][Pattern: WakeNotify]]
++ [[file:032-actor-programming.org][Actor programming]]
++ Excercise: ???
+
+** Section 4: Runtimes in detail
+
++ [[file:035-async-patterns.org][Basic async patterns]]
++ [[file:050-runtimes.org][Dive into runtimes]]
++ [[https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-async/exercises][Exercise overview]]
+
+   
+** Build these slides
+
+   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these
+   slides, but if you must build them yourself, you need to have Emacs
+   (v26+) and org-mode installed!
+
+   The following function will export the full course into an HTML
+   slide tree.
+
+   #+INCLUDE: "../../ci/export-course.el" src emacs-lisp
+   
+** License
+
+   This course, as well as any associated media assets is licensed
+   under Creative Commons CC-BY-SA 3.0.  All associated code examples
+   are licensed under the GNU General Public License Version 3.0 (or
+   later).
+
+   See the [[../licenses][licenses]] directory for complete copies of the applicable
+   license texts.

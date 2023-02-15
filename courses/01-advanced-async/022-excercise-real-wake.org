@@ -1,0 +1,35 @@
+#+Title: A better async Wrapper
+#+SETUPFILE: ../../reveal.setup
+
+* What signals?
+
++ If you're on Linux :: ~inotify-rs~
+
+  #+BEGIN_SRC rust
+    let mut notify = Inotify::init().expect("failed to initialise Inotify structure");
+    notify
+        .add_watch(&path, WatchMask::MOVE)
+        .expect(&format!("failed to watch directory {:?}", path));
+  #+END_SRC
+
++ If you're on macOS/ BSD :: ~kqueue~
+
+  #+BEGIN_SRC rust
+    let mut watcher = kqueue::Watcher::new()?;
+    watcher.add_filename(path, kqueue::EventFilter::EVFILT_VNODE, kqueue::FilterFlag::NOTE_RENAME)?;
+  #+END_SRC
+
+* Alternatively
+
++ ~async-io~ provides a ~Timer~ type
++ Instead of busy-waking (waking a future after every poll), use a
+  fixed Timer to reduce system load.
+
+#+BEGIN_SRC rust
+  use async_io::Timer;
+  use std::time::Duration;
+
+  Timer::after(Duration::from_secs(1)).await;
+#+END_SRC
+
+* [[file:README.org][Back to index]]

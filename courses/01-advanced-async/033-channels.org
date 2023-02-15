@@ -1,0 +1,97 @@
+#+Title: Literally just channels
+#+SETUPFILE: ../../reveal.setup
+
+* How to communicate between tasks?
+
+* Channels!
+
+\\
+
+#+BEGIN_SRC rust
+  async fn main() {
+      let (tx, rx) = async_channel::bounded(64);
+      smol::spawn(async move {
+          // Producer loop
+          while alive() {
+              let data = get_data_via_magic().await;
+              tx.send(data).await;
+          }
+      });
+
+      smol::block_on(async move {
+          // Consumer loop
+          while let Some(data) = rx.recv().await {
+              process_data_somehow(data).await;
+          }
+      });
+  }
+#+END_SRC
+
+* Channels wake up consumers!
+
+* Type separation (with trait objects)
+
+\\
+
++ In a system with many generic types, channels can provide barriers
++ Get type information for a different future
++ This was very relevant when writing the Ockam Node runtime
+  (https://github.com/build-trust/ockam) but might be a bit esoteric
+  for your application
+
+* 
+
+file:imgs/type-separation.png
+
+* 
+
+#+BEGIN_SRC rust
+  trait Bonkers {} 
+  struct Envelope(pub Box<dyn Bonkers + 'static>);
+
+  pub struct A<T> { recv: Receiver<Envelope>, }
+  pub struct B<T> { recv: Receiver<Envelope>, }
+
+  pub struct Lookup {
+      map: BTreeMap<&'static str, Sender<Envelope>>,
+  }
+
+  impl Lookup {
+      fn get_sender_for(&self, id: &str) -> Sender<Envelope> {
+          self.map.get(id).cloned().unwrap()
+      }
+  }
+
+#+END_SRC
+
+* 
+
+#+BEGIN_SRC rust
+  impl A<Foo> {
+      fn send_to_b(&self, l: &Lookup, b: Bar) {
+          let sender = l.get_sender_for("b-my-friend");
+          sender.send(Envelope(Box::new(b))).unwrap();
+      }
+  }
+
+
+  impl B<Bar> {
+      fn handle_new_bar(&self) {
+          let env = self.recv.recv().unwrap();
+          let env_any = env.0.as_any();
+          let b: &Bar = env_any.downcast_ref::<Bar>().unwrap();
+
+          // Tada >.>
+      }
+  }
+
+  impl B<Bar> {
+      fn get_bar(&self) -> Box<Bar> {
+          let env = self.recv.recv().unwrap();
+          core::mem::transmute_copy<Box<dyn Bonkers>, Box<Bar>>(&env.0)
+      }
+  }
+
+#+END_SRC
+
+* [[file:README.org][Back to index]]

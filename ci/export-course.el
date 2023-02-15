@@ -8,7 +8,7 @@
   
   ;; Make sure org-reveal is loaded and set-up
   (load-library "reveal")
-  (setq org-reveal-root "../.templates")
+  (setq org-reveal-root "../../.templates")
   
   ;; Export the README
   (find-file "README.org")

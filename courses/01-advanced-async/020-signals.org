@@ -1,0 +1,49 @@
+#+Title: What are Signals?
+#+SETUPFILE: ../../reveal.setup
+
+* Reaction to outside forces
+
+* How to listen for events?
+
+* Calls from inside the house
+
+\\
+
++ Some other part of the async runtime wakes us
++ For example: channels!
+
+#+BEGIN_SRC rust
+  let (tx, rx) = async_channel::bounded(2);
+
+  smol::spawn(async move {
+      let d = rx.recv().await;
+      println!("Data: {}", d);
+  });
+
+  async_io::Timer::after(Duration::from_secs(1)).await;
+  tx.send("Hello World!".to_owned()).await;
+#+END_SRC
+
+* Calls from outside the house
+
+\\
+
++ The Kernel would like your attention
++ Any external resource (library, filesystem, socket, ...)
++ Use blocking threads to wait for signals!
+
+* Blocking threads
+
+\\
+
++ Not to be confused with ~tokio::task::spawn_blocking~ !
++ Spawn a thread and handle external I/O
++ Provide a ~Waker~ to any relevant tasks
++ Map blocking I/O to async wake signal
+
+* 
+
+file:imgs/external-wake.png
+
+* [[file:README.org][Back to index]]
+

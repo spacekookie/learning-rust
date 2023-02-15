@@ -1,5 +1,5 @@
 #+Title: Async in Rust
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * Async foundations in ~core~
 
@@ -12,6 +12,18 @@
   + In Rust all ~Future~ types are lazy
   + That means they don't "make progress" unless polled
   + This is different in other runtime systems
+
+* Creating a future alone does nothing!
+
+\\
+
+#+BEGIN_SRC rust
+  let fut = MyFuture::new(data, config); // impl Future for MyFuture { ... }
+
+  /// Either of these only work in an async function!
+  // fut.await;
+  // futures::poll!(fut);
+#+END_SRC
 
 * Future lifecycle
 
@@ -33,7 +45,6 @@
     }
   #+END_SRC
 
-
 * The important types at a glance
 
   These can be found in ~core::future~ and ~core::task~
@@ -51,13 +62,59 @@
 * No runtime in ~std~!
 
   + Rust doesn't include a runtime in its std library (for good reason!)
-  + In this workshop we will use both ~tokio~ and ~async-std~ interchangably
-    + Their APIs only vary in very niche cases
+  + All the programming excercises are solvable with ~smol-rs~, a very
+    smol async runtime
 
-* ~tokio~
+* What is a Runtime?
+
+* 
+
++ Process data, handle I/O
++ Schedule available work in an effective way
++ Interleave work as it becomes available
++ De-allocate futures that are no longer needed
+
+* Stopping ongoing work
+
+\\
+
++ Because futures are lazy they can be cancelled (most of the time)
++ This might result in partial state (← how do you handle this?)
+
+* The real lifecycle
+
+\\
+
+Any future can be cancelled at any point!
+
+  #+BEGIN_SRC dot :file imgs/gen/future-lifecycle2.png :cmdline -Kdot -Tpng
+    digraph {
+        node [shape=box, fontsize=24, margin="0.25,0.25"]
+        rankdir = "LR";
+
+        new [color=darkgreen, shape=box]
+        poll [color=teal, shape=box]
+        cancel [color=red, shape=box]
+        yield [color=orange, shape=box]
+        wake [color=teal, shape=box]
+        huh [label="?", color=darkgreen]
+        resolve [color=green, shape=box]
+        new -> poll -> yield;
+        wake -> poll;
+        huh -> wake [style=dashed];
+        poll -> resolve;
+        poll -> cancel [style=dashed]
+    }
+  #+END_SRC
+
+* Your async application is a Runtime!
+
+* Yeah okay but like... really?
+
+** ~tokio~
 
   + Probably needs to introduction
-  + Created in 2016 by Carl Lerche
+  + Started in 2016 by Carl Lerche
 
   #+BEGIN_SRC toml
   [dependencies]
@@ -71,9 +128,9 @@
     }
   #+END_SRC
 
-* ~async-std~
+** ~async-std~
 
-  + Created in 2019 by Stjepan Glavina
+  + Started in 2019 by Stjepan Glavina
   + Maintained by the "Async Rust WG"
 
   #+BEGIN_SRC toml
@@ -88,7 +145,7 @@
     }
   #+END_SRC
 
-* ~smol-rs~
+** ~smol-rs~
 
   + The actual event reactor behind ~async-std~!
   + A bit more clumbsy to use, but just as powerful
@@ -102,13 +159,6 @@
     }
   #+END_SRC
 
-* Different runtimes focus on different UX strategies
-
-* Examples
-
-  The Rust playground will be somewhat useless in these slides.  Run
-  your own examples!
-  
-  https://learn.spacekookie.de/rust/dd-async
+** Different runtimes focus on different UX strategies
 
 * [[file:README.org][Back to index]]

@@ -1,5 +1,5 @@
 #+Title: Actor programming
-#+SETUPFILE: ../reveal.setup
+#+SETUPFILE: ../../reveal.setup
 
 * Actor programming is a model
 
@@ -31,8 +31,8 @@
 
   Some frameworks exist already!
   
-  + Actix
-  + Ockam (← my job basically)
+  + Actix (built on Tokio)
+  + Ockam Node (Also built on Tokio, but /differently/)
 
   #+BEGIN_SRC rust
     use actix::{Actor, Handler, Context, System};

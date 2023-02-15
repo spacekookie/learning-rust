@@ -18,7 +18,7 @@
    programming langueg.  Following is an overview of available
    courses.
 
-   - [[./dd-ownership][deep-dive-ownership]]  :: An intensive deep-dive course into the
+   - [[./dd-ownership][deep-dive-ownership]] :: An intensive deep-dive course into the
      Rust ownership model and it's impact on concurrent programming
    - [[./dd-async/README.org][deep-dive-async]]     :: A deep-dive course into async development,
      async compiler internals, and runtime development in Rust
@@ -34,4 +34,10 @@
    
    #+INCLUDE: "ci/export-course.el" src emacs-lisp
 
+* Sponsors
+
+   This course has been sponsored by various companies that have paid
+   for trainings and the creation of new material in the past.
+
+   
 
