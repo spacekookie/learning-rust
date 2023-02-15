@@ -23,9 +23,13 @@
    - [[./dd-async/README.org][deep-dive-async]]     :: A deep-dive course into async development,
      async compiler internals, and runtime development in Rust
 
+* Hosted slides
+
+https://learn.spacekookie.de/rust/
+   
 * Build these slides
 
-   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/][CI artifacts]] for these
+   It's generally recommended to use the hosted version for these
    slides, but if you must build them yourself, you need to have Emacs
    (v26+) and org-mode installed!
 
@@ -38,6 +42,4 @@
 
    This course has been sponsored by various companies that have paid
    for trainings and the creation of new material in the past.
-
-   
 
