@@ -22,40 +22,34 @@
 ** Section 2: Signals & Reactor loops
 
 + [[file:020-signals.org][What are signals?]]
++ [[file:025-runtimes.org][Dive into runtimes]]
 + [[file:022-excercise-real-wake.org][Exercise: Write a _better_ Async wrapper]]
 
-** Section 3: Async Patterns
+** Section 3: Advanced Patterns
 
 + [[file:033-channels.org][Pattern: Channels]]
 + [[file:030-shutdown-select.org][Pattern: Shutdown select]]
-+ [[file:031-futures-wakenotify.org][Pattern: WakeNotify]]
++ [[file:031-wakenotify.org][Pattern: WakeNotify]]
 + [[file:032-actor-programming.org][Actor programming]]
-+ Excercise: ???
-
-** Section 4: Runtimes in detail
-
-+ [[file:035-async-patterns.org][Basic async patterns]]
-+ [[file:050-runtimes.org][Dive into runtimes]]
-+ [[https://git.irde.st/kookiespace/teaching-rust/-/tree/main/dd-async/exercises][Exercise overview]]
++ [[file:040-async-hacking.org][Exercise: Write an async chat client]]
 
    
 ** Build these slides
 
-   It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these
-   slides, but if you must build them yourself, you need to have Emacs
-   (v26+) and org-mode installed!
+It's generally recommended to use the [[https://git.irde.st/kookiespace/teaching-rust/-/jobs][CI artifacts]] for these slides,
+but if you must build them yourself, you need to have Emacs (v26+) and
+org-mode installed!
 
-   The following function will export the full course into an HTML
-   slide tree.
+The following function will export the full course into an HTML slide
+tree.
 
-   #+INCLUDE: "../../ci/export-course.el" src emacs-lisp
-   
+#+INCLUDE: "../../ci/export-course.el" src emacs-lisp
+  
 ** License
 
-   This course, as well as any associated media assets is licensed
-   under Creative Commons CC-BY-SA 3.0.  All associated code examples
-   are licensed under the GNU General Public License Version 3.0 (or
-   later).
+This course, as well as any associated media assets is licensed under
+Creative Commons CC-BY-SA 3.0.  All associated code examples are
+licensed under the GNU General Public License Version 3.0 (or later).
 
-   See the [[../licenses][licenses]] directory for complete copies of the applicable
-   license texts.
+See the [[../licenses][licenses]] directory for complete copies of the applicable
+license texts.

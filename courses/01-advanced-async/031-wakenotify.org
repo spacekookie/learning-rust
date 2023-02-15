@@ -1,5 +1,4 @@
-#+Title: Future Patters
-#+Subtitle: WakeNotify<T>
+#+Title: What if we don't use channels?
 #+SETUPFILE: ../../reveal.setup
 
 * 
@@ -20,10 +19,32 @@ asynchronous locking mechanisms
         if let Some(num) = collection.lock().await.pop_front() {
             num
         } else {
-            continue
+            smol::future::yield_now().await;
         }
     };
   #+END_SRC
+
+* ~yield_now~
+
+\\
+
+#+BEGIN_SRC rust
+  pub struct YieldNow(bool);
+
+  impl Future for YieldNow {
+      type Output = ();
+
+      fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+          if !self.0 {
+              self.0 = true;
+              cx.waker().wake_by_ref();
+              Poll::Pending
+          } else {
+              Poll::Ready(())
+          }
+      }
+  }
+#+END_SRC
 
 * Hot take 🔥 busy loops are bad
 
@@ -48,7 +69,7 @@ asynchronous locking mechanisms
     let collection = Arc::new(Mutex::new(Notify::new(VecDeque::new())));
     
     // task 1
-    let mg = c.lock().await;
+    let mut mg = c.lock().await;
     mg.push_back(42);
     Notify::wake(&*mg);
     // mg goes out of scope to de-lock the Mutex
@@ -73,5 +94,25 @@ asynchronous locking mechanisms
     })
     .await;
   #+END_SRC
+
+* 
+
+file:imgs/task-notify.png
+
+https://crates.io/crates/task-notify
+
+* 
+
+file:imgs/tokio-notify.png
+
+* Oh about those locks...
+
+* Async locks
+
+Don't use ~std::sync~ types to lock!
+
++ ~tokio::sync::{Mutex, RwLock, Barrier}~
++ ~async_std::sync::{Mutex, RwLock, Barrier}~
++ ~async_lock::{Mutex, RwLock, Barrior}~
 
 * [[file:README.org][Back to index]]

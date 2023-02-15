@@ -5,20 +5,12 @@
 
 \\
 
-| Name           | Version | Description |
-|----------------+---------+-------------|
-| *tokio*        |         |             |
-| *async-std*    |         |             |
-| *smol*         |         |             |
-| *embassy*      |         |             |
-| *fuchia-async* |         |             |
-
-  + tokio :: A popular async ecosystem with HTTP, gRPC, and tracing
-    frameworks.
-  + async-std/ smol :: A project that provides asynchronous
-    counterparts to standard library components.
-  + embassy :: Rust Embedded async executor and HALs
-  + fuchsia-async :: Google's Fuchsia OS executor
++ tokio :: A popular async ecosystem with HTTP, gRPC, and tracing
+  frameworks.
++ async-std/ smol :: A project that provides asynchronous counterparts
+  to standard library components.
++ embassy :: Rust Embedded async executor and HALs
++ fuchsia-async :: Google's Fuchsia OS executor
 
 * The smallest runtime: ~async-task~ & ~futures-lite~
 

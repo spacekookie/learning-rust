@@ -1,0 +1,58 @@
+#+Title: Async Hacking 🪓
+#+SETUPFILE: ../../reveal.setup
+
+* Putting all this into practice
+
+* Chat Client
+
+(encryption optional)
+
+\\
+
++ Async Server :: Accept connections (TCP, UDP, unix sockets, ... up
+  to you), handle a message type, and replicate messages to relevant
+  clients.
++ Async Client :: Connect to the server, join a "room", send and
+  receive messages for this room.
+
+* Chat Message Type
+
+\\
+
+#+BEGIN_SRC rust
+  pub enum Message {
+      TextPayload { room: String, nick: String, content: String, }
+      JoinRoom { room: String, nick: String }
+      CreateRoom { room: String }
+  }
+#+END_SRC
+
+* What structure?
+
+Pick a runtime/ framework/ design philosophy!
+
++ async_std/ tokio :: "batteries included", provide synchronisation,
+  network access, etc
++ smol + util crates :: Compose a larger runtime system from smaller
+  crates.  All the tools are there, but need to be assembled in some
+  way.
++ actix/ ockam :: "batteries included" (ish), but will require some
+  work to map async I/O to actors
+
+* Boilerplate crate
+
+https://github.com/spacekookie/learning-rust/
+
+* Other utilities
+
++ serde :: Serialise data (and pick a format)
++ futures-rs :: Lots of great combinators for working with futures
+  (re-exported from smol)
+
+* Have questions?  Getting stuck?
+
+*YELL AT ME (or the other teaching assistants)!*
+
+Good luck 🚀
+
+* [[file:README.org][Back to index]]

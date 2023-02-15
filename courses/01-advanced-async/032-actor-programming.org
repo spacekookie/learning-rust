@@ -29,11 +29,14 @@
 
 * Actors in Rust
 
-  Some frameworks exist already!
+Using an actor framework will reduce boilerplate in your code!  Some
+frameworks exist already!
   
-  + Actix (built on Tokio)
-  + Ockam Node (Also built on Tokio, but /differently/)
++ Actix (built on Tokio)
++ Ockam Node (Also built on Tokio, but /differently/)
 
+* Calculator in Actix
+  
   #+BEGIN_SRC rust
     use actix::{Actor, Handler, Context, System};
     
@@ -63,5 +66,48 @@
     }
     
   #+END_SRC
+
+
+* Calculator with Ockam
+
+#+BEGIN_SRC rust
+  use ockam::{Context, Message, Worker, access_control::AllowAll, Routed};
+  use serde::{Serialize, Deserialize};
+
+  #[derive(Debug, Serialize, Deserialize, Message)]
+  struct SumMessage(usize, usize);
+
+  struct SumWorker;
+  #[ockam::worker]
+  impl Worker for SumWorker {
+      type Context = Context;
+      type Message = SumMessage;
+
+      async fn handle_message(&mut self, ctx: &mut Context, msg: Routed<SumMessage>) -> Result<()> {
+          ctx.send(msg.return_route(), (msg.0 + msg.1) as u64).await
+      }
+  }
+
+  #[ockam::node]
+  async fn main(mut ctx: Context) -> Result<()> {
+      ctx.start_worker("sum", SumWorker, AllowAll, AllowAll).await?;
+      ctx.send("sum", SumMessage(2, 4)).await?;
+
+      // Wait to receive a reply and print it.
+      let reply = ctx.receive::<u64>().await?;
+      println!("Sum: {}", reply); // should print "6"
+
+      // Shut down everything
+      ctx.stop().await
+  }
+#+END_SRC
+
+* 
+
+file:imgs/calypso.png
+
+Very much not done.
+
+https://cyberchaos.dev/kookie/calypso
 
 * [[file:README.org][Back to index]]
