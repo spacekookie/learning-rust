@@ -16,7 +16,7 @@
 
   #+BEGIN_SRC rust
     let mut watcher = kqueue::Watcher::new()?;
-    watcher.add_filename(path, kqueue::EventFilter::EVFILT_VNODE, kqueue::FilterFlag::NOTE_RENAME)?;
+    watcher.add_filename(path, kqueue::EventFilter::EVFILT_VNODE, kqueue::FilterFlag::NOTE_DELETE)?;
   #+END_SRC
 
 * Alternatively
