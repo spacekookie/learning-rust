@@ -55,9 +55,8 @@
 
 #+BEGIN_SRC rust
   let pipe = AsyncHypePipe::new();
-  if let Some(data) = pipe.await {
-      println("hmmm,,, data: {:?}", data);
-  }
+  
+  println("hmmm,,, data: {:?}", pipe.await);
 #+END_SRC
 
 * [[file:README.org][Back to index]]
